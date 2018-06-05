@@ -1,4 +1,4 @@
-group = 'com.example.rpws.chapters'
+group = 'org.rpis5.chapters'
 version = '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'

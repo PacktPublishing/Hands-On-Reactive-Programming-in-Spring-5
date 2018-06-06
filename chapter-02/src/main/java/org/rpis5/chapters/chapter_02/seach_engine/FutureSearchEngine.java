@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("unused")
 public interface FutureSearchEngine {
-   CompletableFuture<List<URL>> seach(String query, int limit);
+   CompletableFuture<List<URL>> search(String query, int limit);
 }

@@ -7,6 +7,7 @@ import rx.Observable;
 
 import java.net.URL;
 
+@SuppressWarnings("unused")
 public interface RxSearchEngine {
-   Observable<URL> seach(String query);
+   Observable<URL> search(String query);
 }

@@ -5,6 +5,7 @@ package org.rpis5.chapters.chapter_02.seach_engine;
 
 import java.net.URL;
 
-public interface IterbleSearchEngine {
-   Iterable<URL> seach(String query, int limit);
+@SuppressWarnings("unused")
+public interface IterableSearchEngine {
+   Iterable<URL> search(String query, int limit);
 }

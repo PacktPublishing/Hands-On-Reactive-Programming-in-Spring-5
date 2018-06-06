@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reactive Programming with Spring 5</title>
+</head>
+<body>
+<div>
+    <ul id="events"></ul>
+</div>
+<script type="application/javascript">
+    function addMessage(message) {
+        const el = document.createElement("li");
+        el.innerHTML = message;
+        document.getElementById("events").appendChild(el);
+    }
+
+    if (!!window.EventSource) {
+        const eventSource = new EventSource("/temperature-stream");
+
+        window.onbeforeunload = function(){
+            eventSource.close();
+        };
+
+        eventSource.onopen = function (e) {
+            addMessage('Connection opened');
+        };
+        eventSource.onmessage = function (e) {
+            var temperature = JSON.parse(e.data);
+            addMessage('Temperature: ' + Number(temperature.value).toFixed(2) + " C");
+        };
+        eventSource.onerror = function (e) {
+            if (e.readyState === EventSource.CONNECTING) {
+                addMessage('Connecting to server');
+            } else if (e.readyState === EventSource.OPEN) {
+                addMessage('Connection opened');
+            } else if (e.readyState === EventSource.CLOSING) {
+                addMessage('Connection closing');
+            } else if (e.readyState === EventSource.CLOSED) {
+                addMessage('Connection closed');
+            }
+        };
+    } else {
+        addMessage('Your browser does not support Server-Sent Events!');
+    }
+</script>
+</body>
+</html>

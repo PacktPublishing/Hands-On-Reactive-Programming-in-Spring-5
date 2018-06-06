@@ -1,2 +1,4 @@
 rootProject.name = 'reactive-programming-in-spring-5.0'
+
 include "chapter-01"
+include "chapter-02"

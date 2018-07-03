@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('io.vertx:vertx-web:3.5.2')
+    compile('io.vertx:vertx-reactive-streams:3.5.2')
+    compile('io.reactivex.rxjava2:rxjava:2.1.15')
+}

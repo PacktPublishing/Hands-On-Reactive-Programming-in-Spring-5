@@ -2,4 +2,10 @@ rootProject.name = 'reactive-programming-in-spring-5.0'
 
 include "chapter-01"
 include "chapter-02"
+include "chapter-03/news-service"
+include "chapter-03/jdk9"
+include "chapter-03/vert.x"
+include "chapter-03/conversion_problem"
+include "chapter-03/push.vs.pull"
+include "chapter-03/rxjava-reactivestreams-ratpack"
 include "chapter-09"

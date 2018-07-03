@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      port: 27017
+      database: news
+
+server:
+  port: 8080

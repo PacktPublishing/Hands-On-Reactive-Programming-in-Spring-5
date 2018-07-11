@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+management:
+  server:
+    port: 8090
+  endpoints:
+    web:
+      exposure.include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  application:
+    name: "Cloud Ready Reactive Application"
+  boot:
+    admin:
+      context-path: "/admin"
+      client:
+        url: "http://localhost:${management.server.port}/admin"
+
+info:
+  mode: "testing"
+  git-commit: "e78d45f"
+  git-branch: "master"
+  authors: "oleg & igor"
+
+

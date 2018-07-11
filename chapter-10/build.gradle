@@ -1,0 +1,54 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+	mavenCentral()
+}
+
+ext {
+	// TODO: Change to M3 as soon as available
+	reactoreVersion = '3.2.0.BUILD-SNAPSHOT'
+	springBootAdmin = '2.0.0'
+}
+
+dependencies {
+	// Using milestone version to showcase Micrometer integration
+	compile("io.projectreactor:reactor-core:${reactoreVersion}")
+
+	compile('org.springframework.boot:spring-boot-autoconfigure')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	compile('org.springframework.boot:spring-boot-actuator')
+	compile('io.micrometer:micrometer-registry-prometheus')
+
+	compile("de.codecentric:spring-boot-admin-starter-server:${springBootAdmin}")
+	compile("de.codecentric:spring-boot-admin-starter-client:${springBootAdmin}")
+
+	compileOnly('org.projectlombok:lombok')
+
+	// To start embedded MongoDB
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+}
+
+springBoot {
+	buildInfo()
+}

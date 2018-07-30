@@ -36,7 +36,7 @@ public class TemperatureSensor {
    @PostConstruct
    public void init() {
       ScheduledExecutorService executor =
-         new MeteredScheduledThreadPoolExecutor("temp.sensor",3, meterRegistry);
+         new MeteredScheduledThreadPoolExecutor("temp.sensor", 3, meterRegistry);
 
       Scheduler eventsScheduler = Schedulers.fromExecutor(executor);
       dataStream = Flux
@@ -44,8 +44,7 @@ public class TemperatureSensor {
          .repeat()
          .concatMap(ignore -> this.probe()
             .delayElement(randomDelay(1000), eventsScheduler)
-            .name("temperature.events")
-            .tag("events-kind", "temperature.measurement")
+            .name("temperature.probe")
             .metrics()
             .log("temperature.measurement", Level.FINE))
          .publish()
@@ -55,6 +54,16 @@ public class TemperatureSensor {
 
    public Flux<Temperature> temperatureStream() {
       return dataStream;
+   }
+
+   public Mono<Integer> batteryLevel() {
+      return Mono.fromCallable(() -> {
+         int level = rnd.nextInt(100);
+         if (level <= 2 ) {
+            throw new RuntimeException("Can not connect to the sensor");
+         }
+         return level;
+      });
    }
 
    // --- Supporting methods

@@ -9,7 +9,12 @@ management:
       exposure.include: "*"
   endpoint:
     health:
-      show-details: always
+      show-details: "always"
+      cache:
+        time-to-live: 10s
+
+logging:
+  file: cloud-ready-reactive-app.log
 
 spring:
   application:
@@ -20,10 +25,21 @@ spring:
       client:
         url: "http://localhost:${management.server.port}/admin"
 
+# Information about the application
 info:
+  name: "Reactive Spring App"
   mode: "testing"
-  git-commit: "e78d45f"
-  git-branch: "master"
   authors: "oleg & igor"
+  service-version: "2.0"
+  features:
+    feature-a: "enabled"
+    feature-b: "disabled"
+
+# To disable Info endpoint
+#management.endpoint.info.enabled: false
+
+# Distributed tracing
+spring.sleuth.sampler.probability: 1.0
+# spring.zipkin.baseUrl: "http://localhost:9411"
 
 

@@ -24,29 +24,39 @@ repositories {
 }
 
 ext {
-	// TODO: Change to M3 as soon as available
-	reactoreVersion = '3.2.0.BUILD-SNAPSHOT'
-	springBootAdmin = '2.0.0'
+	reactorVersion = '3.2.0.M3'
+	springBootAdminVersion = '2.0.1'
+    springCloudVersion = '2.0.0.RELEASE'
 }
 
 dependencies {
 	// Using milestone version to showcase Micrometer integration
-	compile("io.projectreactor:reactor-core:${reactoreVersion}")
+	compile("io.projectreactor:reactor-core:${reactorVersion}")
 
 	compile('org.springframework.boot:spring-boot-autoconfigure')
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	compile('org.springframework.boot:spring-boot-actuator')
+
+	// Metrics support
 	compile('io.micrometer:micrometer-registry-prometheus')
 
-	compile("de.codecentric:spring-boot-admin-starter-server:${springBootAdmin}")
-	compile("de.codecentric:spring-boot-admin-starter-client:${springBootAdmin}")
+	// Distributed tracing
+	compile("org.springframework.cloud:spring-cloud-starter-sleuth:${springCloudVersion}")
+	compile("org.springframework.cloud:spring-cloud-starter-zipkin:${springCloudVersion}")
+
+	// Pretty UI with Spring Boot Admin
+	compile("de.codecentric:spring-boot-admin-starter-server:${springBootAdminVersion}")
+	compile("de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}")
 
 	compileOnly('org.projectlombok:lombok')
 
 	// To start embedded MongoDB
 	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+
+	// To communicate with NTP servers
+	compile('commons-net:commons-net:3.6')
 }
 
 springBoot {

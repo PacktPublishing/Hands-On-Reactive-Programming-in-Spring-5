@@ -34,11 +34,9 @@ public class EventStreamController {
 
    @GetMapping(path = "/temperature-stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
    public Flux<Temperature> events() {
-
       return temperatureSensor.temperatureStream()
          .doOnSubscribe(subs -> activeStreams.incrementAndGet())
-         .name("temperature.events")
-         .tag("events-kind", "sse.temperature")
+         .name("temperature.sse-stream")
          .metrics()
          .log("sse.temperature", Level.FINE)
          .doOnCancel(() -> activeStreams.decrementAndGet())

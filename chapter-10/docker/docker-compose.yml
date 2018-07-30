@@ -23,3 +23,11 @@ services:
     depends_on:
       - prometheus
 
+  zipkin:
+    image: openzipkin/zipkin
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - 9411:9411
+    mem_limit: 768M
+

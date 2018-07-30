@@ -26,7 +26,7 @@ import java.util.function.Supplier;
  *    - Number of tasks to schedule at a fixed rate
  */
 @RequiredArgsConstructor
-public class CustomSchedulersFactory implements Schedulers.Factory {
+public class MeteredSchedulersFactory implements Schedulers.Factory {
    private final MeterRegistry meterRegistry;
 
    public ScheduledExecutorService decorateExecutorService(

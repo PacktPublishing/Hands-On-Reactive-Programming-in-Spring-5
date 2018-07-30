@@ -1,0 +1,64 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+	mavenCentral()
+}
+
+ext {
+	reactorVersion = '3.2.0.M3'
+	springBootAdminVersion = '2.0.1'
+    springCloudVersion = '2.0.0.RELEASE'
+}
+
+dependencies {
+	// Using milestone version to showcase Micrometer integration
+	compile("io.projectreactor:reactor-core:${reactorVersion}")
+
+	compile('org.springframework.boot:spring-boot-autoconfigure')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	compile('org.springframework.boot:spring-boot-actuator')
+
+	// Metrics support
+	compile('io.micrometer:micrometer-registry-prometheus')
+
+	// Distributed tracing
+	compile("org.springframework.cloud:spring-cloud-starter-sleuth:${springCloudVersion}")
+	compile("org.springframework.cloud:spring-cloud-starter-zipkin:${springCloudVersion}")
+
+	// Pretty UI with Spring Boot Admin
+	compile("de.codecentric:spring-boot-admin-starter-server:${springBootAdminVersion}")
+	compile("de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}")
+
+	compileOnly('org.projectlombok:lombok')
+
+	// To start embedded MongoDB
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+
+	// To communicate with NTP servers
+	compile('commons-net:commons-net:3.6')
+}
+
+springBoot {
+	buildInfo()
+}

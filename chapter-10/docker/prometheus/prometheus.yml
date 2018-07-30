@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 5s
+
+# Monitored services (Prometheus, Spring Boot App)
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'reactive_app'
+    static_configs:
+      # May not work on older Docker Engine or Linux, use external IP, resolvable from a container
+      - targets: ['host.docker.internal:8090']
+    metrics_path: "/actuator/prometheus/"

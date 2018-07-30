@@ -13,3 +13,5 @@ bin
 .vscode
 .gradle
 *.iml
+
+cloud-ready-reactive-app.log

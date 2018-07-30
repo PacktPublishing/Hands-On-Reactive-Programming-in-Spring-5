@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  prometheus:
+    hostname: prometheus
+    image: prom/prometheus:v2.3.0
+    ports:
+      - 9090:9090
+    mem_limit: 128M
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    hostname: grafana
+    image: grafana/grafana:5.1.3
+    ports:
+      - 3000:3000
+    mem_limit: 256M
+    volumes:
+      - ./grafana/config.ini:/etc/grafana/config.ini
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
+
+  zipkin:
+    image: openzipkin/zipkin
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - 9411:9411
+    mem_limit: 768M
+

@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+management:
+  server:
+    port: 8090
+  endpoints:
+    web:
+      exposure.include: "*"
+  endpoint:
+    health:
+      show-details: "always"
+      cache:
+        time-to-live: 10s
+
+logging:
+  file: cloud-ready-reactive-app.log
+
+spring:
+  application:
+    name: "Cloud Ready Reactive Application"
+  boot:
+    admin:
+      context-path: "/admin"
+      client:
+        url: "http://localhost:${management.server.port}/admin"
+
+# Information about the application
+info:
+  name: "Reactive Spring App"
+  mode: "testing"
+  authors: "oleg & igor"
+  service-version: "2.0"
+  features:
+    feature-a: "enabled"
+    feature-b: "disabled"
+
+# To disable Info endpoint
+#management.endpoint.info.enabled: false
+
+# Distributed tracing
+spring.sleuth.sampler.probability: 1.0
+# spring.zipkin.baseUrl: "http://localhost:9411"
+
+

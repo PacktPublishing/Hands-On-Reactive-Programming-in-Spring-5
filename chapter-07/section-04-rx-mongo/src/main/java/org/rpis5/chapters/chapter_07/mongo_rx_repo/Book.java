@@ -3,8 +3,10 @@
  */
 package org.rpis5.chapters.chapter_07.mongo_rx_repo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Wither;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -15,8 +17,10 @@ import java.util.Arrays;
 import java.util.List;
 
 @Document(collection = "book")
-@Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Wither
 public class Book {
    @Id
    private ObjectId id;

@@ -18,13 +18,14 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ProxyController {
    private final MeterRegistry registry;
-   private final WebClient webClient;
+   private final WebClient.Builder webClientBuilder;
 
    @GetMapping(path = "/proxy")
    public Mono<ResponseEntity<String>> proxyRequest(@RequestParam(name = "q") String uri) {
       String targetUri = "https://" + uri;
 
-      return webClient
+      return webClientBuilder
+         .build()
          .get()
          .uri(targetUri)
          .exchange()

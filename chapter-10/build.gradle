@@ -1,9 +1,12 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.3.RELEASE'
+		//springBootVersion = '2.1.0.M1'
+		springBootVersion = '2.0.4.RELEASE'
 	}
 	repositories {
 		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -18,26 +21,28 @@ apply plugin: 'io.spring.dependency-management'
 sourceCompatibility = 1.8
 
 repositories {
+	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
-	mavenCentral()
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshotsx' }
 }
 
 ext {
 	reactorVersion = '3.2.0.M3'
-	springBootAdminVersion = '2.0.1'
-    springCloudVersion = '2.0.0.RELEASE'
+	springCloudVersion = '2.0.1.RELEASE'
+	springBootAdminVersion = '2.0.2'
 }
 
 dependencies {
 	// Using milestone version to showcase Micrometer integration
+	//compile("io.projectreactor:reactor-core")
 	compile("io.projectreactor:reactor-core:${reactorVersion}")
 
 	compile('org.springframework.boot:spring-boot-autoconfigure')
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	compile('org.springframework.boot:spring-boot-actuator')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 
 	// Metrics support
 	compile('io.micrometer:micrometer-registry-prometheus')

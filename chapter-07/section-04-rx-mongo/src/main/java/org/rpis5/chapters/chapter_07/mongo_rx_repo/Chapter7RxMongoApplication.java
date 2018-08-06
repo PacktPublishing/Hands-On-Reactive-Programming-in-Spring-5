@@ -18,6 +18,8 @@ public class Chapter7RxMongoApplication implements CommandLineRunner {
    private static final Logger log = LoggerFactory.getLogger(Chapter7RxMongoApplication.class);
 
    private final BookSpringDataMongoRxRepository bookRepo;
+   private final RxMongoTemplateQueryService rxMongoTemplateQueryService;
+   private final RxMongoDriverQueryService rxMongoDriverQueryService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Chapter7RxMongoApplication.class, args);
@@ -49,6 +51,15 @@ public class Chapter7RxMongoApplication implements CommandLineRunner {
 
 		Flux<Book> booksWithFewAuthors = bookRepo.booksWithFewAuthors();
 		log.info("Books with few authors: \n{}", toString(booksWithFewAuthors).block());
+
+		log.info("--- Custom Query Service with ReactiveMongoTemplate -----------------------------");
+
+		log.info("Search for books with Mars: \n{}",
+			toString(rxMongoTemplateQueryService.findBooksByTitle("Expanse")).block());
+
+      log.info("--- Custom Query Service with ReactiveStreams Mongo Driver ----------------------");
+      log.info("Search for books with Mars: \n{}",
+         toString(rxMongoDriverQueryService.findBooksByTitle("Expanse", true)).block());
 	}
 
    private Mono<String> toString(Flux<Book> books) {

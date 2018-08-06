@@ -5,11 +5,12 @@ package org.rpis5.chapters.chapter_07.jpa;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookSpringDataJpaRepository
-   extends CrudRepository<Book, Integer> {
+   extends PagingAndSortingRepository<Book, Integer> {
 
    Iterable<Book> findByIdBetween(int lower, int upper);
 

@@ -6,7 +6,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import java.util.Iterator;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
+import static java.util.stream.Collectors.joining;
 
 @EnableJpaRepositories
 @SpringBootApplication
@@ -22,17 +30,36 @@ public class Chapter7JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-      log.info("All books in DB: \n{}", toString(bookRepository.findAll()));
+      log.info("All books in DB: \n{}",
+         toString(bookRepository.findAll()));
 
-      log.info("All books with ids in range 12..15: \n{}", toString(bookRepository.findByIdBetween(12, 15)));
+      log.info("All books with ids in range 12..15: \n{}",
+         toString(bookRepository.findByIdBetween(12, 15)));
 
-      log.info("The book with the shortest titles: \n{}", toString(bookRepository.findShortestTitle()));
+      log.info("The book with the shortest titles: \n{}",
+         toString(bookRepository.findShortestTitle()));
+
+      log.info("--- Pagination requests --------------------------------------");
+      PageRequest initialRequest = PageRequest.of(0, 3);
+      for (Page<Book> currentPage = bookRepository.findAll(initialRequest);
+           currentPage.hasNext();
+           currentPage = bookRepository.findAll(currentPage.nextPageable())) {
+         log.info("[++++] Page {}: {}", currentPage.getNumber(), toString(currentPage));
+      }
 	}
 
    private String toString(Iterable<Book> books) {
-	   StringBuilder sb = new StringBuilder();
-      books.iterator().forEachRemaining(b ->
-         sb.append(" - ").append(b.toString()).append("\n"));
-      return sb.toString();
+      return toString(StreamSupport.stream(books.spliterator(), false));
+   }
+
+   private String toString(Stream<Book> books) {
+      try {
+         return books
+            .map(Book::toString)
+            .collect(joining("\n - ", "\n - ", ""));
+      } finally {
+         // We have to close the stream when finished to free the resources used by the query.
+         books.close();
+      }
    }
 }

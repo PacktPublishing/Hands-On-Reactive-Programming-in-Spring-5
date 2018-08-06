@@ -1,9 +1,11 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.2.RELEASE'
+		springBootVersion = '2.1.0.M1'
 	}
 	repositories {
 		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -19,18 +21,20 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
 }
-
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-autoconfigure')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	compile('org.springframework.boot:spring-boot-starter-web')
+	//compile('org.springframework.boot:spring-boot-starter-data-redis-reactive')
+	//compile('org.springframework.boot:spring-boot-starter-data-cassandra-reactive')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
 	compileOnly('org.projectlombok:lombok')
-
-	runtime('com.h2database:h2')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

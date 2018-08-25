@@ -14,6 +14,7 @@ include "chapter-07/section-01-jdbc"
 include "chapter-07/section-02-jpa"
 include "chapter-07/section-03-mongo"
 include "chapter-07/section-04-rx-mongo"
+include "chapter-07/section-05-rx-mongo-tx"
 // include "chapter-07/section-06-rx-dbs"
 
 include "chapter-09"

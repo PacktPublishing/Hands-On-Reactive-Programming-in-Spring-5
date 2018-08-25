@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.0.M1'
+		springBootVersion = '2.1.0.M2'
 	}
 	repositories {
 		mavenCentral()
@@ -25,16 +25,21 @@ repositories {
 	maven { url "https://repo.spring.io/milestone" }
 }
 
+ext {
+    reactorExtraVersion = '3.2.0.M2'
+    junitPlatformVersion = '1.2.0'
+}
+
 dependencies {
-	compile('org.springframework.boot:spring-boot-autoconfigure')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	//compile('org.springframework.boot:spring-boot-starter-data-redis-reactive')
-	//compile('org.springframework.boot:spring-boot-starter-data-cassandra-reactive')
-	compile('org.springframework.boot:spring-boot-starter-webflux')
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+    compile('org.springframework.boot:spring-boot-autoconfigure')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
-	compileOnly('org.projectlombok:lombok')
+    compile("io.projectreactor.addons:reactor-extra:${reactorExtraVersion}")
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compileOnly('org.projectlombok:lombok')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -1,0 +1,16 @@
+
+spring:
+  data:
+    mongodb:
+#      uri: "mongodb://192.168.2.106:27017/wallet,192.168.2.106:27018/wallet,192.168.2.106:27019/wallet"
+
+      host: "localhost"
+      port: 27017
+      database: "wallet"
+#      username: "admin"
+#      password: "admin"
+#      authentication-database: "admin"
+
+logging.level:
+  reactor.core.publisher.FluxUsingWhen: ERROR
+  #org.springframework.data.mongodb.core.ReactiveMongoTemplate: DEBUG

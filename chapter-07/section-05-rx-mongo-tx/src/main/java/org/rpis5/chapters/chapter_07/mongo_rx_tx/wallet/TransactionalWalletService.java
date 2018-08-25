@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.time.Instant;
 
+import static java.time.Instant.now;
 import static reactor.function.TupleUtils.function;
 
 @Slf4j
@@ -37,10 +39,13 @@ public class TransactionalWalletService extends BaseWalletService {
          fromOwner,
          toOwner,
          requestAmount
-      ).flatMap(function((from, to, amount) ->
-         transferMoney(from, to, amount)
+      ).flatMap(function((from, to, amount) -> {
+         Instant start = now();
+         return transferMoney(from, to, amount)
             .retryBackoff(10, Duration.ofMillis(10))
-            .onErrorReturn(TxResult.TX_CONFLICT)));
+            .onErrorReturn(TxResult.TX_CONFLICT)
+            .doOnSuccess(result -> log.info("Updated took: {}", Duration.between(start, now())));
+      }));
    }
 
    private Mono<TxResult> transferMoney(

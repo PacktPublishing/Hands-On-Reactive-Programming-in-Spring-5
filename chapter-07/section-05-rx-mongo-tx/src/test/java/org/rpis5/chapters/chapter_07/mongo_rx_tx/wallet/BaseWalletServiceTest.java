@@ -23,7 +23,7 @@ class BaseWalletServiceTest {
    private final Random rnd = new Random();
 
    void simulateOperations(WalletService walletService) {
-      int accounts = 50;
+      int accounts = 500;
       int defaultBalance = 1000;
       int iterations = 10000;
       int parallelism = 10;

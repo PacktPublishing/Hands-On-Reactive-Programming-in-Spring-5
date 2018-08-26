@@ -42,9 +42,10 @@ public class TransactionalWalletService extends BaseWalletService {
       ).flatMap(function((from, to, amount) -> {
          Instant start = now();
          return transferMoney(from, to, amount)
-            .retryBackoff(10, Duration.ofMillis(10))
+            .retryBackoff(20, Duration.ofMillis(1), Duration.ofMillis(50), 0.1)
             .onErrorReturn(TxResult.TX_CONFLICT)
-            .doOnSuccess(result -> log.info("Updated took: {}", Duration.between(start, now())));
+            .doOnSuccess(result -> log.info("Transaction result: {}, took: {}",
+               result, Duration.between(start, now())));
       }));
    }
 

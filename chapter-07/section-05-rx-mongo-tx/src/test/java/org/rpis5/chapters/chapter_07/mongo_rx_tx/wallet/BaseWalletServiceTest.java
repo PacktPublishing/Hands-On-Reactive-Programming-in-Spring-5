@@ -26,7 +26,7 @@ class BaseWalletServiceTest {
       int accounts = 500;
       int defaultBalance = 1000;
       int iterations = 10000;
-      int parallelism = 10;
+      int parallelism = 200;
 
       // given
       // Clean up just in case

@@ -62,7 +62,7 @@ class TransactionalWalletServiceTest extends BaseWalletServiceTest {
          .withLogConsumer(new Consumer<OutputFrame>() {
             @Override
             public void accept(OutputFrame outputFrame) {
-               log.info("[Mongo-{}]: {}", exposePort, outputFrame.getUtf8String().trim());
+               log.debug("[Mongo-{}]: {}", exposePort, outputFrame.getUtf8String().trim());
             }
          })
          .withCommand("mongod --storageEngine wiredTiger --replSet reactive");

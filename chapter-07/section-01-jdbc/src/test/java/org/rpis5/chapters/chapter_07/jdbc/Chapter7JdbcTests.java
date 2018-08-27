@@ -34,14 +34,29 @@ public class Chapter7JdbcTests {
             log.info("Schema created, data inserted");
          }
 
-         ResultSet rows = conn.createStatement()
-            .executeQuery("SELECT * FROM book");
+         try(ResultSet rows = conn.createStatement()
+            .executeQuery("SELECT * FROM book")
+         ) {
+            log.info("Forward traversal");
 
-         while (rows.next()) {
-            log.info("id: {}, title: {}",
-                     rows.getInt(1), rows.getString("title"));
+            while (rows.next()) {
+               log.info("id: {}, title: {}",
+                  rows.getInt(1), rows.getString("title"));
+            }
          }
-         rows.close();
+
+         try(ResultSet rows = conn
+            .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+            .executeQuery("SELECT * FROM book")
+         ) {
+            log.info("Backward traversal");
+
+            rows.last();
+            do {
+               log.info("[Reverse] id: {}, title: {}",
+                  rows.getInt(1), rows.getString("title"));
+            } while (rows.previous());
+         }
       } finally {
          log.info("Connection closed");
       }

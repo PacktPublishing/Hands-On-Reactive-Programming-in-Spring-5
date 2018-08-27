@@ -1,6 +1,3 @@
-/**
- * Copyright (C) Zoomdata, Inc. 2012-2018. All rights reserved.
- */
 package org.rpis5.chapters.chapter_02.rx_app_no_logs;
 
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;

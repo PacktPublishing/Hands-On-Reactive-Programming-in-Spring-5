@@ -1,0 +1,5 @@
+
+spring.data.mongodb.database: test-db
+
+#logging.level:
+  #org.springframework.data.mongodb.core.ReactiveMongoTemplate: DEBUG

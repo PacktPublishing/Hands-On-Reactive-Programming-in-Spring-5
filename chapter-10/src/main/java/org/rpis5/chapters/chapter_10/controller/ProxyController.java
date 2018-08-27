@@ -1,6 +1,3 @@
-/**
- * Copyright (C) Zoomdata, Inc. 2012-2018. All rights reserved.
- */
 package org.rpis5.chapters.chapter_10.controller;
 
 import io.micrometer.core.instrument.MeterRegistry;
@@ -18,13 +15,14 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ProxyController {
    private final MeterRegistry registry;
-   private final WebClient webClient;
+   private final WebClient.Builder webClientBuilder;
 
    @GetMapping(path = "/proxy")
    public Mono<ResponseEntity<String>> proxyRequest(@RequestParam(name = "q") String uri) {
       String targetUri = "https://" + uri;
 
-      return webClient
+      return webClientBuilder
+         .build()
          .get()
          .uri(targetUri)
          .exchange()

@@ -1,0 +1,18 @@
+mongo-node1:
+  image: mongo:4.0.1
+  hostname: "mongo-node1"
+  ports:
+    - "27017:27017"
+  command: mongod --storageEngine wiredTiger --replSet reactive
+mongo-node2:
+  image: mongo:4.0.1
+  hostname: "mongo-node2"
+  ports:
+    - "27018:27017"
+  command: mongod --storageEngine wiredTiger --replSet reactive
+mongo-node3:
+  hostname: "mongo-node3"
+  image: mongo:4.0.1
+  ports:
+    - "27019:27017"
+  command: mongod --storageEngine wiredTiger --replSet reactive

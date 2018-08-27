@@ -1,4 +1,4 @@
-package org.rpis5.chapters.chapter_07.jpa;
+package org.rpis5.chapters.chapter_07.wrapped_sync;
 
 import lombok.RequiredArgsConstructor;
 import org.reactivestreams.Publisher;

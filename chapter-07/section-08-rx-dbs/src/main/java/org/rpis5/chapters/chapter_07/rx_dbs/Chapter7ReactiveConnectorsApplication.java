@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chapter7ReactiveRepoApplication {
+public class Chapter7ReactiveConnectorsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Chapter7ReactiveRepoApplication.class, args);
+		SpringApplication.run(Chapter7ReactiveConnectorsApplication.class, args);
 	}
 }

@@ -1,6 +1,3 @@
-/**
- * Copyright (C) Zoomdata, Inc. 2012-2018. All rights reserved.
- */
 package org.rpis5.chapters.chapter_07.mongo_rx_tx.wallet;
 
 import lombok.AllArgsConstructor;
@@ -11,17 +8,14 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "wallet")
 @NoArgsConstructor
 @AllArgsConstructor
 @Wither
 @Data
+@Document(collection = "wallet")
 public class Wallet {
-   @Id
-   private ObjectId id;
-
+   @Id private ObjectId id;
    private String owner;
-
    private int balance;
 
    // Some statistics
@@ -49,3 +43,6 @@ public class Wallet {
       return new Wallet(new ObjectId(), owner, balance, 0, 0);
    }
 }
+
+
+

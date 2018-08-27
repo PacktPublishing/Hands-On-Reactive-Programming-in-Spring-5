@@ -16,6 +16,7 @@ include "chapter-07/section-03-mongo"
 include "chapter-07/section-04-rx-mongo"
 include "chapter-07/section-05-rx-mongo-tx"
 include "chapter-07/section-06-r2dbc"
+include "chapter-07/section-08-rx-dbs"
 include "chapter-07/section-09-rx-sync"
 
 include "chapter-09"

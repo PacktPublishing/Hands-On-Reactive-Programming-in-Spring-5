@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.0.M1'
+		springBootVersion = '2.1.0.M2'
 	}
 	repositories {
 		mavenCentral()
@@ -29,13 +29,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	compile('org.springframework.boot:spring-boot-starter-data-cassandra-reactive')
 	compile('org.springframework.boot:spring-boot-starter-data-couchbase-reactive')
-	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-    compile('org.springframework.boot:spring-boot-starter-data-neo4j')
 	compile('org.springframework.boot:spring-boot-starter-data-redis-reactive')
-	compile('org.springframework.boot:spring-boot-starter-data-solr')
 
 	compileOnly('org.projectlombok:lombok')
 

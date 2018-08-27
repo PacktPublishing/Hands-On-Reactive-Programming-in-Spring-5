@@ -1,8 +1,4 @@
-/**
- * Copyright (C) Zoomdata, Inc. 2012-2018. All rights reserved.
- */
 package org.rpis5.chapters.chapter_07.mongo_rx_tx;
-
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

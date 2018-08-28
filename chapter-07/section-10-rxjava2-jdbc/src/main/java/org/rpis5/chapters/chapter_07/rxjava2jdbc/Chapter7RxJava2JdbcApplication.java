@@ -8,10 +8,10 @@ import reactor.core.publisher.Flux;
 
 @Slf4j
 @SpringBootApplication
-public class Chapter7JpaApplication implements CommandLineRunner {
+public class Chapter7RxJava2JdbcApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Chapter7JpaApplication.class, args);
+		SpringApplication.run(Chapter7RxJava2JdbcApplication.class, args);
 	}
 
 	@Override

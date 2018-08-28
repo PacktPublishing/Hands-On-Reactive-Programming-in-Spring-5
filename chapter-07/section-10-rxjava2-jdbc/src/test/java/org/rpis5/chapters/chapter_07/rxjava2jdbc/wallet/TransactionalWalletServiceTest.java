@@ -1,9 +1,11 @@
-package org.rpis5.chapters.chapter_07.mongo_rx_tx.wallet;
+package org.rpis5.chapters.chapter_07.rxjava2jdbc.wallet;
 
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
@@ -19,15 +21,28 @@ import static java.time.Instant.now;
 
 @SuppressWarnings("Duplicates")
 @Slf4j
-@DataMongoTest
-class BaseWalletServiceTest {
+public class TransactionalWalletServiceTest {
    private final Random rnd = new Random();
 
+   @DisplayName("Reactive transactions for data transfer with rxJava2-jdbc")
+   @ParameterizedTest
+   @CsvSource({ "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;TRACE_LEVEL_FILE=4, 20"})
+   public void testReactiveTransactionalApproach(
+      String uri,
+      Integer maxPoolSize
+   ) {
+      WalletService walletService = new WalletServiceImpl(uri, maxPoolSize);
+      simulateOperations(walletService);
+   }
+
    void simulateOperations(WalletService walletService) {
-      int accounts = 500;
+      int accounts = 1000;
       int defaultBalance = 1000;
-      int iterations = 10000;
-      int parallelism = 200;
+      int iterations = 10;
+      int parallelism = 5;
+
+      walletService.initializeDatabase()
+      .block();
 
       // given
       // Clean up just in case

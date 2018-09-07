@@ -2,9 +2,6 @@ package org.rpis5.chapters.chapter_07.mongo_rx_tx;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.reactivestreams.client.MongoClient;
-import com.mongodb.reactivestreams.client.MongoCollection;
-import com.mongodb.reactivestreams.client.MongoDatabase;
-import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,16 +26,16 @@ public class RxMongoDriverQueryService {
 
    public Flux<Book> findBooksByTitle(String title, boolean negate) {
       return Flux.defer(() -> {
-         MongoDatabase database = mongoClient.getDatabase(dbName);
-         MongoCollection<Document> collection = database.getCollection(BOOK_COLLECTION);
-
          Bson query = Filters
             .regex("title", ".*" + title + ".*");
 
          if (negate) {
             query = Filters.not(query);
          }
-         return collection.find(query);
+         return mongoClient
+            .getDatabase(dbName)
+            .getCollection(BOOK_COLLECTION)
+            .find(query);
       })
          .map(doc -> new Book(
             doc.getObjectId("id"),

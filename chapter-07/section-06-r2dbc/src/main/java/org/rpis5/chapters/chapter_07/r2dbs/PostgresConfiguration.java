@@ -31,7 +31,7 @@ public class PostgresConfiguration {
       });
       postgres.start();
 
-      // TODO: USe better wait strategy
+      // TODO: Use some better wait strategy
       Thread.sleep(10_000);
 
       DatabaseLocation dbLocation = new DatabaseLocation(

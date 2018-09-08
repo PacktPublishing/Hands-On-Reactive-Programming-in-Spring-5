@@ -1,0 +1,15 @@
+spring.datasource:
+  driverClassName: "org.h2.Driver"
+  url: "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;mode=MySQL"
+  #url: "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;TRACE_LEVEL_FILE=4;mode=MySQL"
+  username: "sa"
+  password: "sa"
+
+spring.h2.console.enabled: true
+spring.datasource.initialization-mode: always
+spring.jpa.hibernate.ddl-auto: none
+
+logging.level:
+  org.springframework.jdbc.datasource: INFO
+
+rxjava2jdbc.pool.size: 20

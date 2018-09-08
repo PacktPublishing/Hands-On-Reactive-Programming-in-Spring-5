@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -40,7 +42,7 @@ public class Chapter7RxMongoApplication implements CommandLineRunner {
 		);
 
 		rxBookRepository
-			.saveAll(books)
+			.saveAll(books /*.toIterable()*/ ) // Iterator inserts all entities with one query
          .count()
 			.doOnNext(amount -> log.info("{} books saved in DB", amount))
 			.block();
@@ -52,6 +54,9 @@ public class Chapter7RxMongoApplication implements CommandLineRunner {
 			.findByAuthorsOrderByPublishingYearDesc(Mono.just("Andy Weir"));
 		reportResults("All books by Andy Weir:", andyWeirBooks);
 
+      reportResults("Search for books with title regexp:",
+         rxBookRepository.findManyByTitleRegex("Exp.*"));
+
 		Flux<Book> booksWithFewAuthors = rxBookRepository.booksWithFewAuthors();
 		reportResults("Books with few authors:", booksWithFewAuthors);
 
@@ -60,11 +65,19 @@ public class Chapter7RxMongoApplication implements CommandLineRunner {
          rxMongoTemplateQueryService.findBooksByTitle("Expanse"));
 
       log.info("--- Custom Query Service with ReactiveStreams Mongo Driver ----------------------");
-      reportResults("Search for books without 'Expanse'",
+      reportResults("Search for books without 'Expanse':",
          rxMongoDriverQueryService.findBooksByTitle("Expanse", true));
 
       log.info("--- Updating book's publishing year ---------------------------------------------");
       yearUpdatedExample.updatedBookYearByTitle();
+
+		log.info("--- Pageable support ------------------------------------------------------------");
+		reportResults("The first page of books:",
+			rxBookRepository.findByPublishingYearBetweenOrderByPublishingYear(1800, 2020, PageRequest.of(0, 2)));
+      reportResults("The second page of books:",
+         rxBookRepository.findByPublishingYearBetweenOrderByPublishingYear(1800, 2020, PageRequest.of(1, 2)));
+      reportResults("The third page of books:",
+         rxBookRepository.findByPublishingYearBetweenOrderByPublishingYear(1800, 2020, PageRequest.of(2, 2)));
 	}
 
    private void reportResults(String message, Flux<Book> books) {

@@ -1,5 +1,6 @@
 package org.rpis5.chapters.chapter_07.mongo_rx_tx.wallet;
 
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -17,10 +18,10 @@ import java.util.Random;
 import static java.time.Duration.between;
 import static java.time.Instant.now;
 
+@SuppressWarnings("Duplicates")
 @Slf4j
 @DataMongoTest
 class BaseWalletServiceTest {
-   private final Random rnd = new Random();
 
    void simulateOperations(WalletService walletService) {
       int accounts = 500;
@@ -43,24 +44,16 @@ class BaseWalletServiceTest {
          .newParallel("MongoOperations", parallelism);
 
       Instant startTime = now();
-      Operations operations = Flux.range(0, iterations)
-         .flatMap(i -> Mono
-            .delay(Duration.ofMillis(rnd.nextInt(10)))
-            .publishOn(mongoScheduler)
-            .flatMap(_i -> {
-               int amount = rnd.nextInt(defaultBalance);
-               int from = rnd.nextInt(accounts);
-               int to;
-               do {
-                  to = rnd.nextInt(accounts);
-               } while (to == from);
+      OperationalSimulation simulation = OperationalSimulation.builder()
+         .walletService(walletService)
+         .clients(clients)
+         .defaultBalance(defaultBalance)
+         .iterations(iterations)
+         .simulationScheduler(mongoScheduler)
+         .build();
 
-               return walletService.transferMoney(
-                  Mono.just(clients.get(from)),
-                  Mono.just(clients.get(to)),
-                  Mono.just(amount));
-            }))
-         .reduce(Operations.start(), Operations::outcome)
+      OperationStats operations = simulation
+         .runSimulation()
          .block();
 
       // then
@@ -77,28 +70,76 @@ class BaseWalletServiceTest {
          .block();
    }
 
+   @Builder
+   @RequiredArgsConstructor
+   public static class OperationalSimulation {
+      private final WalletService walletService;
+      private final List<String> clients;
+      private final int defaultBalance;
+      private final int iterations;
+      private final Scheduler simulationScheduler;
+
+      private final Random rnd = new Random();
+
+      public Mono<OperationStats> runSimulation() {
+         return Flux.range(0, iterations)
+            .flatMap(i -> Mono
+               .delay(Duration.ofMillis(rnd.nextInt(10)))
+               .publishOn(simulationScheduler)
+               .flatMap(_i -> {
+                  String fromOwner = randomOwner();
+                  String toOwner = randomOwnerExcept(fromOwner);
+                  int amount = randomTransferAmount();
+
+                  return walletService.transferMoney(
+                     Mono.just(fromOwner),
+                     Mono.just(toOwner),
+                     Mono.just(amount));
+               }))
+            .reduce(OperationStats.start(), OperationStats::countTxResult);
+      }
+
+      private int randomTransferAmount() {
+         return rnd.nextInt(defaultBalance);
+      }
+
+      private String randomOwner() {
+         int from = rnd.nextInt(clients.size());
+         return clients.get(from);
+      }
+
+      private String randomOwnerExcept(String fromOwner) {
+         String toOwner;
+         do {
+            int to = rnd.nextInt(clients.size());
+            toOwner = clients.get(to);
+         } while (fromOwner.equals(toOwner));
+         return toOwner;
+      }
+   }
+
    @ToString
    @RequiredArgsConstructor
-   public static class Operations {
+   public static class OperationStats {
       private final int successful;
       private final int notEnoughFunds;
       private final int conflict;
 
-      public Operations outcome(WalletService.TxResult result) {
+      public OperationStats countTxResult(WalletService.TxResult result) {
          switch (result){
             case SUCCESS:
-               return new Operations(successful + 1, notEnoughFunds, conflict);
+               return new OperationStats(successful + 1, notEnoughFunds, conflict);
             case NOT_ENOUGH_FUNDS:
-               return new Operations(successful, notEnoughFunds + 1, conflict);
+               return new OperationStats(successful, notEnoughFunds + 1, conflict);
             case TX_CONFLICT:
-               return new Operations(successful, notEnoughFunds, conflict + 1);
+               return new OperationStats(successful, notEnoughFunds, conflict + 1);
             default:
                throw new RuntimeException("Unexpected status:" + result);
          }
       }
 
-      public static Operations start() {
-         return new Operations(0, 0, 0);
+      public static OperationStats start() {
+         return new OperationStats(0, 0, 0);
       }
    }
 }

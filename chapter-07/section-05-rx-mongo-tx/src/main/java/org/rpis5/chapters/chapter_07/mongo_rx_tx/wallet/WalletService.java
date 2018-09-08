@@ -10,7 +10,10 @@ public interface WalletService {
 
    Flux<String> generateClients(Integer number, Integer defaultBalance);
 
-   Mono<TxResult> transferMoney(Mono<String> fromOwner, Mono<String> toOwner, Mono<Integer> amount);
+   Mono<TxResult> transferMoney(
+      Mono<String> fromOwner,
+      Mono<String> toOwner,
+      Mono<Integer> amount);
 
    Mono<Statistics> reportAllWallets();
 

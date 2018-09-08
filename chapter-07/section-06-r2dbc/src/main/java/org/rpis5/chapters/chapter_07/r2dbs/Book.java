@@ -1,11 +1,12 @@
 package org.rpis5.chapters.chapter_07.r2dbs;
 
+import lombok.Data;
 import lombok.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("book")
-@Value
+@Data
 public class Book {
    @Id Integer id;
    String title;

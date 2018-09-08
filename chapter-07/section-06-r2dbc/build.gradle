@@ -33,6 +33,7 @@ ext {
 	springDataR2dbcVersion = 'r2dbc-SNAPSHOT'
 	r2dbcSpiVersion = '1.0.0.BUILD-SNAPSHOT'
 	r2dbcPostgresqlVersion = '1.0.0.BUILD-SNAPSHOT'
+	r2dbcClientlVersion = '1.0.0.BUILD-SNAPSHOT'
 }
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -41,6 +42,7 @@ dependencies {
 	compile("com.github.spring-projects:spring-data-jdbc:${springDataR2dbcVersion}")
 	compile("io.r2dbc:r2dbc-spi:${r2dbcSpiVersion}")
 	compile("io.r2dbc:r2dbc-postgresql:${r2dbcPostgresqlVersion}")
+	compile("io.r2dbc:r2dbc-client:${r2dbcClientlVersion}")
 
 	compile("org.testcontainers:testcontainers:${testContainersVersion}")
 	compile("org.testcontainers:postgresql:${testContainersVersion}")

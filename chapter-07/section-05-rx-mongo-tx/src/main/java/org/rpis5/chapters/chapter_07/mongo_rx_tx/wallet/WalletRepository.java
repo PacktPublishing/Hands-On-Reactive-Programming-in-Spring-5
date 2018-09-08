@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface WalletRepository extends ReactiveMongoRepository<Wallet, ObjectId> {
+public interface WalletRepository
+   extends ReactiveMongoRepository<Wallet, ObjectId> {
 
    Mono<Wallet> findByOwner(Mono<String> owner);
 }

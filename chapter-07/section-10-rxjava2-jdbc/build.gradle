@@ -1,0 +1,55 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.M2'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+ext {
+    reactorExtraVersion = '3.2.0.M2'
+	rxjava2JdbcVersion = '0.1-RC38'
+	junitPlatformVersion = '1.2.0'
+	testContainersVersion = '1.8.3'
+	guavaVersion = '19.0'
+}
+
+dependencies {
+	compile("com.github.davidmoten:rxjava2-jdbc:${rxjava2JdbcVersion}")
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile("com.google.guava:guava:${guavaVersion}")
+
+    compile("io.projectreactor.addons:reactor-extra:${reactorExtraVersion}")
+
+    compileOnly('org.projectlombok:lombok')
+
+    runtime('com.h2database:h2')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.junit.jupiter:junit-jupiter-api')
+    testCompile('org.junit.jupiter:junit-jupiter-engine')
+    testCompile('org.junit.jupiter:junit-jupiter-params')
+    testCompile("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
+    testCompile("org.testcontainers:testcontainers:${testContainersVersion}")
+	testCompileOnly('org.projectlombok:lombok')
+}

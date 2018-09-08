@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
 @Repository
-public interface BookRepository extends ReactiveCrudRepository<Book, Integer> {
+public interface BookRepository
+   extends ReactiveCrudRepository<Book, Integer> {
 
    @Query("SELECT * FROM book WHERE publishing_year = " +
           "(SELECT MAX(publishing_year) FROM book)")

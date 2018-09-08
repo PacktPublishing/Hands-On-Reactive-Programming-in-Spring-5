@@ -1,5 +1,8 @@
 package org.rpis5.chapters.chapter_07.r2dbs;
 
+import io.r2dbc.client.R2dbc;
+import io.r2dbc.postgresql.PostgresqlConnectionConfiguration;
+import io.r2dbc.postgresql.PostgresqlConnectionFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +14,10 @@ import org.springframework.data.r2dbc.function.TransactionalDatabaseClient;
 import java.time.Duration;
 import java.util.Arrays;
 
+/**
+ * Application may fail on the first start-up due to timeout for Docker image download.
+ * Please, retry a few times in case of failures.
+ */
 @Slf4j
 @RequiredArgsConstructor
 @SpringBootApplication
@@ -20,8 +27,9 @@ import java.util.Arrays;
 })
 public class Chapter7R2dbcApplication implements CommandLineRunner {
 
-   private final TransactionalDatabaseClient databaseClient;
-   private final BookRepository bookRepository;
+	private final PostgresqlConnectionFactory pgConnectionFactory;
+	private final TransactionalDatabaseClient databaseClient;
+	private final BookRepository bookRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Chapter7R2dbcApplication.class, args);
@@ -78,6 +86,24 @@ public class Chapter7R2dbcApplication implements CommandLineRunner {
          .count()
          .doOnSuccess(count -> log.info("Database contains {} latest books", count))
          .block();
+
+      log.info("Using raw R2DBC Client");
+      // Using raw client
+      R2dbc r2dbc = new R2dbc(pgConnectionFactory);
+
+      r2dbc.inTransaction(handle ->
+         handle
+            .execute("insert into book (id, title, publishing_year) " +
+               "values ($1, $2, $3)",
+               20, "The Sands of Mars", 1951)
+            .doOnNext(inserted -> log.info("{} rows was inserted into DB", inserted))
+      ).thenMany(r2dbc.inTransaction(handle ->
+            handle.select("SELECT title FROM book")
+               .mapResult(result ->
+                  result.map((row, rowMetadata) ->
+                     row.get("title", String.class)))))
+         .doOnNext(elem -> log.info(" - Title: {}", elem))
+         .blockLast();
 	}
 
 }

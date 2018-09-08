@@ -9,7 +9,8 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
 @RequiredArgsConstructor
-public abstract class ReactiveCrudRepositoryAdapter<T, ID, I extends CrudRepository<T, ID>>
+public abstract class
+   ReactiveCrudRepositoryAdapter<T, ID, I extends CrudRepository<T, ID>>
    implements ReactiveCrudRepository<T, ID> {
 
    protected final I delegate;

@@ -17,6 +17,17 @@ import org.springframework.data.relational.core.mapping.RelationalMappingContext
 @Configuration
 class InfrastructureConfiguration {
 
+   //@Bean
+   BookRepository customerRepository2(PostgresqlConnectionFactory factory) {
+      TransactionalDatabaseClient txClient =
+         TransactionalDatabaseClient.builder()
+            .connectionFactory(factory)
+            .build();
+      RelationalMappingContext context = new RelationalMappingContext();
+      return new R2dbcRepositoryFactory(txClient, context)
+         .getRepository(BookRepository.class);
+   }
+
    @Bean
    BookRepository customerRepository(R2dbcRepositoryFactory factory) {
       return factory.getRepository(BookRepository.class);
@@ -24,7 +35,6 @@ class InfrastructureConfiguration {
 
    @Bean
    R2dbcRepositoryFactory repositoryFactory(DatabaseClient client) {
-
       RelationalMappingContext context = new RelationalMappingContext();
       return new R2dbcRepositoryFactory(client, context);
    }

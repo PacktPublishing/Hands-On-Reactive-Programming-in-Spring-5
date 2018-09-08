@@ -9,10 +9,13 @@ import reactor.core.scheduler.Scheduler;
 import static reactor.function.TupleUtils.function;
 
 @Component
-public class RxBookRepository
-   extends ReactiveCrudRepositoryAdapter<Book, Integer, BookJpaRepository> {
+public class RxBookRepository extends
+   ReactiveCrudRepositoryAdapter<Book, Integer, BookJpaRepository> {
 
-   public RxBookRepository(BookJpaRepository delegate, Scheduler scheduler) {
+   public RxBookRepository(
+      BookJpaRepository delegate,
+      Scheduler scheduler
+   ) {
       super(delegate, scheduler);
    }
 

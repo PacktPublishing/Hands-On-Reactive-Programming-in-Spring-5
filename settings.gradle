@@ -10,6 +10,8 @@ include "chapter-03/conversion_problem"
 include "chapter-03/push.vs.pull"
 include "chapter-03/rxjava-reactivestreams-ratpack"
 
+include "chapter-04"
+
 include "chapter-07/section-01-jdbc"
 include "chapter-07/section-02-jpa"
 include "chapter-07/section-03-mongo"

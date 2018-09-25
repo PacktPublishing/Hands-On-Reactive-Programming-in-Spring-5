@@ -26,13 +26,7 @@ repositories {
 }
 
 ext {
-	reactorVersion = '3.2.0.M3'
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "io.projectreactor:reactor-bom:Bismuth-SR4"
-	}
+	reactorVersion = '3.2.0.RELEASE'
 }
 
 dependencies {

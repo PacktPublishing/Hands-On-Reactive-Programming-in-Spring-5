@@ -1,0 +1,56 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.M4'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+ext {
+	reactorExtraVersion = '3.2.0.RELEASE'
+	springBootAdminVersion = '2.1.0-SNAPSHOT'
+	springCloudVersion = 'Greenwich.BUILD-SNAPSHOT'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-autoconfigure')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	compile('org.springframework.cloud:spring-cloud-stream-reactive')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+
+    compile("io.projectreactor.addons:reactor-extra:${reactorExtraVersion}")
+	
+    compileOnly('org.projectlombok:lombok')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+

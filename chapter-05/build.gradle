@@ -33,6 +33,8 @@ ext {
 }
 
 dependencies {
+  	implementation("io.reactivex.rxjava2:rxjava:2.2.0")
+  	implementation("io.projectreactor:reactor-core")
 	compile('org.springframework.boot:spring-boot-autoconfigure')
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
@@ -44,6 +46,7 @@ dependencies {
 	
     compileOnly('org.projectlombok:lombok')
 
+  	testImplementation("io.projectreactor:reactor-test")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

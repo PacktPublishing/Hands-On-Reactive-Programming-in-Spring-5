@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+
+dependencies {
+    compile('org.reactivestreams:reactive-streams:1.0.2')
+
+
+    testCompile('org.reactivestreams:reactive-streams-tck:1.0.2')
+    testCompile('org.hamcrest:java-hamcrest:2.0.0.0')
+    testCompile('io.projectreactor:reactor-core:3.2.0.RELEASE')
+    testCompile('io.projectreactor:reactor-test:3.2.0.RELEASE')
+    testCompile('junit:junit:4.12')
+
+}

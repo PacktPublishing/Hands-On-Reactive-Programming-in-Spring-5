@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.0.M2'
+		springBootVersion = '2.1.0.M4'
 	}
 	repositories {
 		mavenCentral()
@@ -32,7 +32,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
-	compileOnly('org.projectlombok:lombok')
+	compileOnly('org.projectlombok:lombok:1.18.2')
 
 	runtime('com.h2database:h2')
 

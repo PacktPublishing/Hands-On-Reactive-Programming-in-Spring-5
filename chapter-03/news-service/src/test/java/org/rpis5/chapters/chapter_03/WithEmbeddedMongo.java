@@ -2,7 +2,7 @@ package org.rpis5.chapters.chapter_03;
 
 import org.rpis5.chapters.chapter_03.news_service.dto.News;
 import com.mongodb.ConnectionString;
-import com.mongodb.async.client.MongoClientSettings;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.connection.*;
 import com.mongodb.connection.netty.NettyStreamFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
@@ -52,22 +52,17 @@ public interface WithEmbeddedMongo {
         ConnectionString connectionString = new ConnectionString("mongodb://localhost/news");
         MongoClientSettings.Builder builder = MongoClientSettings.builder()
                 .streamFactoryFactory(NettyStreamFactory::new)
-                .clusterSettings(ClusterSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
-                .connectionPoolSettings(ConnectionPoolSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
-                .serverSettings(ServerSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
-                .credentialList(connectionString.getCredentialList())
-                .sslSettings(SslSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
-                .socketSettings(SocketSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
+                .applyToClusterSettings((cs) -> cs
+                        .applyConnectionString(connectionString))
+                .applyToConnectionPoolSettings(cps -> cps
+                        .applyConnectionString(connectionString))
+                .applyToServerSettings(ss -> ss
+                        .applyConnectionString(connectionString))
+                .credential(connectionString.getCredential())
+                .applyToSslSettings(ss -> ss
+                        .applyConnectionString(connectionString))
+                .applyToSocketSettings(ss -> ss
+                        .applyConnectionString(connectionString))
                 .codecRegistry(fromRegistries(
                         MongoClients.getDefaultCodecRegistry(),
                         fromProviders(PojoCodecProvider.builder()

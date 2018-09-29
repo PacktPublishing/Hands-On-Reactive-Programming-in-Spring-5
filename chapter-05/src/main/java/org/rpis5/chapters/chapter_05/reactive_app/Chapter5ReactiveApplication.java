@@ -43,4 +43,5 @@ public class Chapter5ReactiveApplication {
 					.contentType(MediaType.APPLICATION_STREAM_JSON)
 					.body(sensorReadingRepository.findBy(), SensorsReadings.class));
 	}
+
 }

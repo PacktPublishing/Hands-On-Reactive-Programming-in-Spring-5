@@ -1,16 +1,20 @@
-package org.rpis5.chapters.chapter_04.reactor.context;
+/**
+ * Copyright (C) Zoomdata, Inc. 2012-2018. All rights reserved.
+ */
+package org.rpis5.chapters.chapter_04;
+
+import org.junit.Test;
+import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
-import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
+public class ThreadLocalProblemShowcaseTest {
 
-public class ThreadLocalProblemShowcase {
-
-    public static void main(String[] args) {
+    @Test(expected = NullPointerException.class)
+    public void shouldFailDueToDifferentThread() {
         ThreadLocal<Map<Object, Object>> threadLocal = new ThreadLocal<>();
         threadLocal.set(new HashMap<>());
 

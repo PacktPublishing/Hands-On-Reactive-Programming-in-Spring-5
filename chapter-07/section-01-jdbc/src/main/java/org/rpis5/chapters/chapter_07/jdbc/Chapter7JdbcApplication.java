@@ -92,6 +92,8 @@ public class Chapter7JdbcApplication implements CommandLineRunner {
          return dao.listBooks();
       });
       log.info("All Books according to Jdbi: {}", toString(allBooksFromJdbi.stream()));
+
+      log.info("Application finished successfully!");
    }
 
 	private String toString(Stream<Book> books) {

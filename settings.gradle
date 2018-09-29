@@ -1,6 +1,7 @@
 rootProject.name = 'reactive-programming-in-spring-5.0'
 
 include "chapter-01"
+
 include "chapter-02"
 
 include "chapter-03/news-service"
@@ -11,9 +12,8 @@ include "chapter-03/push.vs.pull"
 include "chapter-03/rxjava-reactivestreams-ratpack"
 include "chapter-03/async.vs.reactive"
 
-include "chapter-05"
-
 include "chapter-04"
+
 include "chapter-05"
 
 include "chapter-07/section-01-jdbc"
@@ -32,4 +32,5 @@ include "chapter-08/cloud-stream"
 include "chapter-08/cloud-function"
 
 include "chapter-09"
+
 include "chapter-10"

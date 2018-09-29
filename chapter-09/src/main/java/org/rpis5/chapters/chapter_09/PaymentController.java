@@ -18,12 +18,12 @@ public class PaymentController {
 		paymentService = service;
 	}
 
-	@GetMapping("/")
+	@GetMapping("")
 	public Flux<Payment> list() {
 		return paymentService.list();
 	}
 
-	@PostMapping("/")
+	@PostMapping("")
 	public Mono<String> send(Mono<Payment> payment) {
 		return paymentService.send(payment);
 	}

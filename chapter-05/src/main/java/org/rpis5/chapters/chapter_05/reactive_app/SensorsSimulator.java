@@ -22,7 +22,7 @@ import static java.time.LocalDateTime.now;
 @RequiredArgsConstructor
 public class SensorsSimulator {
    public static final int MAX_READINGS_DELAY = 5000;
-   public static final int COLLECTION_MAX_SIZE = 50;
+   public static final int COLLECTION_MAX_SIZE = 10_000;
 
    private final SensorReadingRepository sensorReadingRepository;
    private final ReactiveMongoOperations mongoOperations;

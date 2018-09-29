@@ -3,6 +3,7 @@ package org.rpis5.chapters.chapter_07.mongo_rx_tx.wallet;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -15,12 +16,16 @@ import org.testcontainers.containers.FixedHostPortGenericContainer;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.output.OutputFrame;
 import org.testcontainers.containers.wait.strategy.Wait;
+import reactor.util.function.Tuple2;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.function.Consumer;
 
-@SuppressWarnings("Duplicates")
+/**
+ * ATTENTION: Test requires running Docker Engine!
+ * ATTENTION: If fails to start, please restart the test!
+ */
 @Slf4j
 @DataMongoTest
 class TransactionalWalletServiceTest extends BaseWalletServiceTest {
@@ -85,7 +90,9 @@ class TransactionalWalletServiceTest extends BaseWalletServiceTest {
       @Autowired ReactiveMongoTemplate mongoTemplate
    ) {
       WalletService walletService = new TransactionalWalletService(mongoTemplate, walletRepository);
-      simulateOperations(walletService);
-   }
+      Tuple2<Long, Long> expectedActual = simulateOperations(walletService);
 
+      // Whe know that balance should be the same with transactions
+      Assert.assertEquals(expectedActual.getT1(), expectedActual.getT2());
+   }
 }

@@ -1,0 +1,48 @@
+spring:
+  profiles: gitter
+
+spring.cloud.stream:
+  bindings:
+    output:
+      destination: Messages
+      producer:
+        requiredGroups: statistic, ui
+
+gitter:
+  auth:
+    token: ${GITTER_TOKEN}
+  api:
+    endpoint: https://api.gitter.im/
+    messages-resource: rooms/${GITTER_ROOM}/chatMessages
+  stream:
+    endpoint: https://stream.gitter.im/
+    messages-resource: rooms/${GITTER_ROOM}/chatMessages
+
+---
+
+spring:
+  profiles: statistic
+
+spring.cloud.stream:
+  bindings:
+    input:
+      destination: Messages
+      group: statistic
+    output:
+      producer:
+        requiredGroups: ui
+      destination: Statistic
+
+---
+
+spring:
+  profiles: ui
+
+spring.cloud.stream:
+    bindings:
+      messages:
+        destination: Messages
+        group: ui
+      statistic:
+        destination: Statistic
+        group: ui

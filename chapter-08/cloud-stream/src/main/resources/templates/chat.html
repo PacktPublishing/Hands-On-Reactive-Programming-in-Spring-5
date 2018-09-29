@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chat</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+    <style>
+        .chats-row div {
+            height: 50%;
+            border: 1px solid #ddd;
+            padding: 0px;
+        }
+
+        .media-object {
+            max-width: 64px;
+        }
+
+        .current-chat {
+            height: 100vh;
+            border: 1px solid #ddd;
+        }
+
+        .chat-toolbar-row {
+            background-color: #f5f5f5;
+        }
+
+        .chat-toolbar {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .current-chat-area {
+            padding-top: 10px;
+            overflow: auto;
+            height: 94vh;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 current-chat">
+            <div class="row chat-toolbar-row">
+                <div class="col-sm-12">
+                    <div class="btn-group chat-toolbar users-statistic" role="group" aria-label="...">
+                        <div class="btn btn-default ticket-option most-active">
+                            <i class="glyphicon glyphicon-king"></i>
+                            <span>
+                                Most Active User :
+                                <span th:text="${statistic.getMostActive().getName()}"></span>
+                            </span>
+                        </div>
+                        <div class="btn btn-default ticket-option most-mentioned">
+                            <i class="glyphicon glyphicon-sunglasses"></i>
+                            <span>
+                                Most Mentioned User :
+                                <span th:text="${statistic.getMostMentioned().getName()}"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row current-chat-area">
+                <div class="col-md-12">
+                    <ul class="media-list">
+                        <li th:each="message : ${messages}" class="media">
+                            <div class="media-body">
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle "
+                                             th:src="${message.getUserAvatarUrl()}"/>
+                                    </a>
+                                    <div class="media-body" th:inline="none">
+                                        <span th:utext="${message.getHtml()}" th:remove="tag">title</span>
+                                        <br/>
+                                        <small class="text-muted"
+                                               th:text="${message.getUsername()
+                                               + ' | '
+                                               + #dates.format(message.getSent(), 'dd-MM-yyyy, HH:mm:ss')}"></small>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="message-template">
+    <li class="media">
+        <div class="media-body">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-circle" src="${ userAvatarUrl }"/>
+                </a>
+                <div class="media-body">
+                    ${ html }
+                    <br/>
+                    <small class="text-muted">
+                        ${ username } | ${ moment(sent).format("DD-MM-YYYY, HH:mm:ss") }
+                    </small>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+<script type="text/html" id="users-statistic-template">
+    <div class="btn-group chat-toolbar users-statistic" role="group" aria-label="...">
+        <div class="btn btn-default ticket-option most-active">
+            <i class="glyphicon glyphicon-king"></i>
+            <span>
+            Most Active User :
+            <span>${ mostActive.name }</span>
+        </span>
+        </div>
+        <div class="btn btn-default ticket-option most-mentioned">
+            <i class="glyphicon glyphicon-sunglasses"></i>
+            <span>
+            Most Mentioned User :
+            <span>${ mostMentioned.name }</span>
+        </span>
+        </div>
+    </div>
+</script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var messageTemplate = _.template($('#message-template').html(), { 'imports': { 'moment': moment }});
+    var statisticTemplate = _.template($('#users-statistic-template').html());
+    var chatArea = $('.media-list');
+    var scrollableArea = $('.current-chat-area');
+    var statisticArea = $(".chat-toolbar-row>div");
+
+    function isMessage(data) {
+        return !_.isUndefined(data.html);
+    }
+
+    var evtSource = new EventSource("/api/v1/info");
+    evtSource.onmessage = function(e) {
+        var v = JSON.parse(e.data);
+
+        if (isMessage(v)) {
+            chatArea.append(messageTemplate(v));
+            scrollableArea.stop();
+            scrollableArea.animate({scrollTop: chatArea.height()}, 500);
+        } else {
+            statisticArea.html(statisticTemplate(v));
+        }
+    };
+    /*]]>*/
+</script>
+</body>
+</html>

@@ -28,6 +28,8 @@ include "chapter-07/section-09-rx-sync"
 include "chapter-07/section-10-rxjava2-jdbc"
 
 include "chapter-08/dataflow/mongodb-processor"
+include "chapter-08/cloud-stream"
+include "chapter-08/cloud-function"
 
 include "chapter-09"
 include "chapter-10"

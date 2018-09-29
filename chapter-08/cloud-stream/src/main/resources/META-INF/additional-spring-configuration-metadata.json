@@ -1,0 +1,56 @@
+{
+  "groups": [
+    {
+      "name": "gitter",
+      "type": "com.example.service.gitter.GitterProperties",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "Gitter Api Configurations Properties."
+    }
+  ],
+  "properties": [
+    {
+      "name": "gitter.api.endpoint",
+      "type": "java.net.URI",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "REST Endpoint URI for interact with rooms, users and messages."
+    },
+    {
+      "name": "gitter.api.messages-resource",
+      "type": "java.net.URI",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "REST Messages resource path property. Should include room id too."
+    },
+    {
+      "name": "gitter.api.version",
+      "type": "java.lang.String",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "Gitter REST API version.",
+      "defaultValue": "v1"
+    },
+    {
+      "name": "gitter.stream.endpoint",
+      "type": "java.net.URI",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "Streaming Endpoint URI for interact with rooms, users and messages."
+    },
+    {
+      "name": "gitter.stream.messages-resource",
+      "type": "java.net.URI",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "Streaming Messages resource path property. Should include room id."
+    },
+    {
+      "name": "gitter.stream.version",
+      "type": "java.lang.String",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "Gitter Streaming API version.",
+      "defaultValue": "v1"
+    },
+    {
+      "name": "gitter.auth.token",
+      "type": "java.lang.String",
+      "sourceType": "com.example.service.gitter.GitterProperties",
+      "description": "Gitter API Authentication token."
+    }
+  ]
+}

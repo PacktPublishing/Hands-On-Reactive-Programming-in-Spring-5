@@ -64,7 +64,7 @@ Now, you may explore and run all examples.
 All code in this repository is for demonstration purposes and, consequently, often oversimplified.
 Also, the code in this repository is **not production ready** and may require some improvements and additional testing. 
 
-## Chapter 1
+## Chapter 1: Why Reactive Spring?
 
 Contains the following examples:
 
@@ -74,14 +74,14 @@ Contains the following examples:
 * `futures.OrdersService` - a console application that demonstrates the `Future` based approach for components interactions.
 * `completion_stage.OrdersService` - a console application that demonstrates the `CompletionStage` based approach for components interactions.
 
-## Chapter 2
+## Chapter 2: Reactive Programming in Spring - Basic Concepts
 
 * Module unit tests show examples of the Observer pattern and reactive workflows with RxJava 1.
 * `pub_sub_app.Application` - a web application that demonstrates how Spring 4 enables asynchronous execution with `ApplicationEventPublisher` and SSE.
 * `rx_app.Application` - a web application that demonstrates how Spring 4 enables asynchronous execution with RxJava 1.x and SSE.
 * `rx_app_no_logs.Application` - a web application that demonstrates how Spring 4 enables asynchronous execution with RxJava 1.x and SSE.
 
-## Chapter 3
+## Chapter 3: Reactive Streams - the New Streams' Standard
 
 * `conversion_problem` - a web application (with corresponding unit tests) demonstrates how to convert different types of futures.
 * `async.vs.reactive` - unit tests compares the asynchronous and reactive approached (`Publisher` as `CompletableFuture`, `CompletableFuture` as `Publisher`).
@@ -92,18 +92,18 @@ Contains the following examples:
 * `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates the power of Reactive Streams for integration of reactive libraries (Spring, Ratpack, RxJava, etc.). **Works with JDK8, may fail with JDK11**.
 * `vert.x.VertxDemoApp` - a web application that demonstrates how Verte.x integrates with Reactive Streams. 
 
-## Chapter 4
+## Chapter 4: Project Reactor - the Foundation for Reactive Apps
 
 * Module unit tests show examples of reactive workflows with Project Reactor.
 
-## Chapter 5
+## Chapter 5: Going Reactive with Spring Boot 2
 
 * Module unit tests show how Spring's reactive adapters work.
 * `Chapter5ReactiveApplication` - web reactive application that simulates IoT sensor (SSE, MongoDB write, MongoDB read).
 
-## Chapter 6
+## Chapter 6: WebFlux Async Non-blocking Communication
 
-## Chapter 7
+## Chapter 7: Reactive Database Access
 
 * `section-01-jdbc` - a blocking console application that demonstrates Jdbi library, Spring JDBC and Spring Data JDBC (runs embedded H2 database).
 * `section-02-jpa` - a blocking console application that demonstrates Spring Data JPA (runs embedded H2 database).
@@ -116,14 +116,14 @@ Contains the following examples:
 * `section-09-rx-sync` - a console application that demonstrates how to wrap blocking JPA repository into reactive repository (runs embedded H2 database).
 * `section-10-rxjava2-jdbc` - a console application that demonstrates how to use the `rxjava2-jdbc` library for reactive communication over blocking JDBC (runs embedded H2 database).
 
-## Chapter 8
+## Chapter 8: Scaling Up with Cloud Streams
 
-## Chapter 9
+## Chapter 9: Testing the Reactive Application
 
 * `DemoApplication` - a web application used for testing with a reactive test framework.
 * Module unit tests demonstrate how to verify reactive applications with `WebTestClient` (including security).
 
-## Chapter 10 
+## Chapter 10: And, Finally, Release It!
 
 This sample depicts a reactive application based on Spring Boot 2 and WebFlux with all required infrastructure for operational monitoring.
 

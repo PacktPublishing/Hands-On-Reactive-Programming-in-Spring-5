@@ -45,6 +45,7 @@ import static ratpack.jackson.Jackson.json;
 @SpringBootApplication
 @EnableRatpack
 public class NewsServiceApp {
+    public static final int NEWS_SERVER_PORT = 8070;
 
     @Autowired
     MongoClient client;
@@ -94,7 +95,7 @@ public class NewsServiceApp {
 
     @Bean
     HttpNewsService externalNews() {
-        return () -> HttpClient.newClient(new InetSocketAddress(8080))
+        return () -> HttpClient.newClient(new InetSocketAddress(NEWS_SERVER_PORT))
                                .createGet("")
                                .flatMap(HttpClientResponse::getContent)
                                .flatMapIterable(bb -> {
@@ -134,7 +135,7 @@ public class NewsServiceApp {
         SpringApplication.run(NewsServiceApp.class, args);
 
         RatpackServer.start(spec ->
-            spec.serverConfig(ServerConfig.embedded().port(8080))
+            spec.serverConfig(ServerConfig.embedded().port(NEWS_SERVER_PORT))
                 .handlers(chain -> chain.get(ctx -> ctx.render(json(Arrays.asList(
                         News.builder()
                             .author("test")

@@ -107,8 +107,8 @@ Contains the following examples:
 
 * `section-01-jdbc` - a blocking console application that demonstrates Jdbi library, Spring JDBC and Spring Data JDBC (runs embedded H2 database).
 * `section-02-jpa` - a blocking console application that demonstrates Spring Data JPA (runs embedded H2 database).
-* `section-03-mongo` - a blocking console application that demonstrates Spring Data Mongo (runs embedded MongoDB)
-* `section-04-rx-mongo` - a reactive console application that demonstrates **reactive Spring Data Mongo** (runs embedded MongoDB).
+* `section-03-mongo` - a blocking console application that demonstrates Spring Data MongoDB (runs embedded MongoDB)
+* `section-04-rx-mongo` - a reactive console application that demonstrates reactive Spring Data MongoDB (runs embedded MongoDB).
 * `section-05-rx-mongo-tx` - unit tests that demonstrate how reactive transactions work with MongoDB 4 (runs MongoDB cluster in Docker).
 * `section-06-r2dbc` - a reactive console application that demonstrates how Spring Data JDBC and **R2DBC** work together (runs PostgreSQL in docker).
 * `section-07-rx-webflux` - a reactive web application (SSE) that simulates simple chat application (embedded MongoDB).

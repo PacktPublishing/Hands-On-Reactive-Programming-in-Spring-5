@@ -41,6 +41,8 @@ public class Chapter7RxMongoApplication implements CommandLineRunner {
 
         Iterable<Book> booksWithFewAuthors = bookRepo.booksWithFewAuthors();
         log.info("Books with few authors: \n{}", toString(booksWithFewAuthors));
+
+        log.info("Application finished successfully!");
     }
 
     private String toString(Iterable<Book> books) {

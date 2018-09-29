@@ -33,13 +33,14 @@ ext {
 }
 
 dependencies {
-  	implementation("io.reactivex.rxjava2:rxjava:2.2.0")
-  	implementation("io.projectreactor:reactor-core")
+	compile("io.reactivex.rxjava2:rxjava:2.2.0")
+	compile("io.projectreactor:reactor-core")
 	compile('org.springframework.boot:spring-boot-autoconfigure')
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	compile('org.springframework.cloud:spring-cloud-stream-reactive')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
+
 	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
     compile("io.projectreactor.addons:reactor-extra:${reactorExtraVersion}")

@@ -11,7 +11,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 
-@ComponentScan(basePackageClasses = Application.class)
 @EnableAsync
 @SpringBootApplication
 public class Application implements AsyncConfigurer {

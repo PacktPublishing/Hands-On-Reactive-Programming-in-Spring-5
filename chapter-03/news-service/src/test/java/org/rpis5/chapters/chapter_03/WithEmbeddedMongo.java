@@ -58,7 +58,8 @@ public interface WithEmbeddedMongo {
                         .applyConnectionString(connectionString))
                 .applyToServerSettings(ss -> ss
                         .applyConnectionString(connectionString))
-                .credential(connectionString.getCredential())
+              // TODO: Do not work with JDK11 without the next line being commented (null is not allowed)
+              //.credential(connectionString.getCredential())
                 .applyToSslSettings(ss -> ss
                         .applyConnectionString(connectionString))
                 .applyToSocketSettings(ss -> ss

@@ -9,6 +9,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
+import reactor.util.function.Tuple2;
+import reactor.util.function.Tuples;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -23,7 +25,7 @@ import static java.time.Instant.now;
 @DataMongoTest
 class BaseWalletServiceTest {
 
-   void simulateOperations(WalletService walletService) {
+   Tuple2<Long, Long> simulateOperations(WalletService walletService) {
       int accounts = 500;
       int defaultBalance = 1000;
       int iterations = 10000;
@@ -68,6 +70,8 @@ class BaseWalletServiceTest {
       log.info("Cleaning up database");
       walletService.removeAllClients()
          .block();
+
+      return Tuples.of((long) accounts * defaultBalance, statistics.getTotalBalance());
    }
 
    @Builder

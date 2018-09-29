@@ -19,6 +19,6 @@ public class Chapter7RxMongoTransactions implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-
+		log.info("This application is verifiable through unit tests only!");
 	}
 }

@@ -1,6 +1,7 @@
 package org.rpis5.chapters.chapter_07.mongo_rx_tx.wallet;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -10,9 +11,14 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.testcontainers.containers.FixedHostPortGenericContainer;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
+import reactor.util.function.Tuple2;
 
 import java.time.Duration;
 
+/**
+ * ATTENTION: Test requires running Docker Engine!
+ * ATTENTION: If fails to start, please restart the test!
+ */
 @Slf4j
 @DataMongoTest
 class NaiveWalletServiceTest extends BaseWalletServiceTest {
@@ -41,6 +47,9 @@ class NaiveWalletServiceTest extends BaseWalletServiceTest {
       @Autowired WalletRepository walletRepository
    ) {
       WalletService walletService = new NaiveWalletService(walletRepository);
-      simulateOperations(walletService);
+      Tuple2<Long, Long> expectedActual = simulateOperations(walletService);
+
+      // Whe know that balance will differ with the current approach
+      Assert.assertNotEquals(expectedActual.getT1(), expectedActual.getT2());
    }
 }

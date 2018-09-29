@@ -54,6 +54,11 @@ public class LogServiceApplication {
         );
     }
 
+    @RequestMapping("/")
+    public String root() {
+        return "Please go to http://localhost:8080/logs";
+    }
+
     @RequestMapping("/logs")
     public SseEmitter mockLogs() {
         SseEmitter emitter = new SseEmitter();

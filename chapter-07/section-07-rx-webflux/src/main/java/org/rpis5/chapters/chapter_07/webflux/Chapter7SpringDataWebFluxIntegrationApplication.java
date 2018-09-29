@@ -28,14 +28,14 @@ public class Chapter7SpringDataWebFluxIntegrationApplication {
    ) {
 		return RouterFunctions
 			.route(
-				GET("/chat"),
+				GET("/"),
 				serverRequest -> ServerResponse
 					.ok()
 					.contentType(MediaType.APPLICATION_STREAM_JSON)
 					.body(chatHandler
                   .messageStream(), Message.class))
          .andRoute(
-            GET("/chat/{user}"),
+            GET("/{user}"),
             serverRequest -> {
                String user = serverRequest.pathVariable("user");
                return ServerResponse

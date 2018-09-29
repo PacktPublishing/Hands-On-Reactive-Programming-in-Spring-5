@@ -11,7 +11,7 @@ import io.vertx.ext.reactivestreams.ReactiveReadStream;
 public class VertxDemoApp extends AbstractVerticle {
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         LogService logsService = new MockLogService();
         vertx.createHttpServer()
              .requestHandler(request -> {

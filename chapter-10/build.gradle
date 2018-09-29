@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		//springBootVersion = '2.1.0.M1'
-		springBootVersion = '2.0.4.RELEASE'
+		springBootVersion = '2.1.0.M4'
+//		springBootVersion = '2.0.5.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -24,13 +24,13 @@ repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
-	maven { url 'https://oss.sonatype.org/content/repositories/snapshotsx' }
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 ext {
-	reactorVersion = '3.2.0.M3'
-	springCloudVersion = '2.0.1.RELEASE'
-	springBootAdminVersion = '2.0.2'
+	reactorVersion = '3.2.0.RELEASE'
+	springCloudVersion = '2.1.0.M1'
+	springBootAdminVersion = '2.1.0-SNAPSHOT'
 }
 
 dependencies {

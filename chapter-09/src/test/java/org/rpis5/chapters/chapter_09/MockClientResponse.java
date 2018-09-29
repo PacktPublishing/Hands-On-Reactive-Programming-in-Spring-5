@@ -51,6 +51,11 @@ public class MockClientResponse implements ClientResponse {
 	}
 
 	@Override
+	public int rawStatusCode() {
+		return status.value();
+	}
+
+	@Override
 	public Headers headers() {
 		return new DefaultHeaders();
 	}

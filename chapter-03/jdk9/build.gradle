@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.13.RELEASE'
+        springBootVersion = '1.5.16.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -26,5 +26,5 @@ repositories {
 dependencies {
     compile(project(':chapter-03/news-service'))
     compile('org.reactivestreams:reactive-streams-flow-adapters:1.0.2')
-    compile('io.reactivex.rxjava2:rxjava:2.1.15')
+    compile('io.reactivex.rxjava2:rxjava:2.2.2')
 }

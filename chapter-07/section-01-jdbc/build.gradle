@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.0.M2'
+		springBootVersion = '2.1.0.M4'
 	}
 	repositories {
 		mavenCentral()
@@ -26,7 +26,7 @@ repositories {
 }
 
 ext {
-    springDataJdbcVersion = '1.0.0.RC1'
+    springDataJdbcVersion = '1.0.0.RELEASE'
 	jdbiVersion = '3.3.0'
 }
 
@@ -39,7 +39,7 @@ dependencies {
 	compile("org.jdbi:jdbi3-core:${jdbiVersion}")
 	compile("org.jdbi:jdbi3-sqlobject:${jdbiVersion}")
 
-	compileOnly('org.projectlombok:lombok')
+	compileOnly('org.projectlombok:lombok:1.18.2')
 
 	// In-memory DB for demonstration purposes
 	runtime('com.h2database:h2')

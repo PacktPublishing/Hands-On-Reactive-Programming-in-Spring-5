@@ -70,7 +70,7 @@ Contains the following examples:
 
 * `ChapterFirstApplication` - a web application that demonstrates the blocking communication approach.
 * `imperative.OrdersService` - a console application that demonstrates the synchronous, blocking approach for components interactions.
-* `callbacks.OrdersService` - a console application that demonstrates the callbacks-based approach for components interactions.
+* `callbacks.OrdersService` - a console application that demonstrates the callback-based approach for components interactions.
 * `futures.OrdersService` - a console application that demonstrates the `Future` based approach for components interactions.
 * `completion_stage.OrdersService` - a console application that demonstrates the `CompletionStage` based approach for components interactions.
 
@@ -89,7 +89,7 @@ Contains the following examples:
 * `news-service` unit tests show how to test custom implementation of Reactive Streams with TCK. **Based on TestNG, may fail with JDK11, works with JDK8, tests may run for a couple of minutes!**
 * `jdk9` - a console application that demonstrates how to adapt `reactive-streams` types to Java Flow API. **This application requires at least JDK9**.
 * `push.vs.pull` - classes and unit tests that demonstrate different approaches for data retrieval (pull, batched pull, push, push-pull).
-* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates integration of Spring 4 and Ratpack. **Works with JDK8**
+* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates the power of Reactive Streams for integration of reactive libraries (Spring, Ratpack, RxJava, etc.). **Works with JDK8**
 * `vert.x.VertxDemoApp` - a web application that demonstrates how Verte.x integrates with Reactive Streams. 
 
 ## Chapter 4

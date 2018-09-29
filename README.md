@@ -68,29 +68,29 @@ Also, the code in this repository is **not production ready** and may require so
 
 Contains the following examples:
 
-* `ChapterFirstApplication` - web application that demonstrates the blocking communication approach.
-* `imperative.OrdersService` - console application that demonstrates the synchronous, blocking approach for components interactions.
-* `callbacks.OrdersService` - console application that demonstrates the callbacks-based approach for components interactions.
-* `futures.OrdersService` - console application that demonstrates the `Future` based approach for components interactions.
-* `completion_stage.OrdersService` - console application that demonstrates the `CompletionStage` based approach for components interactions.
+* `ChapterFirstApplication` - a web application that demonstrates the blocking communication approach.
+* `imperative.OrdersService` - a console application that demonstrates the synchronous, blocking approach for components interactions.
+* `callbacks.OrdersService` - a console application that demonstrates the callbacks-based approach for components interactions.
+* `futures.OrdersService` - a console application that demonstrates the `Future` based approach for components interactions.
+* `completion_stage.OrdersService` - a console application that demonstrates the `CompletionStage` based approach for components interactions.
 
 ## Chapter 2
 
 * Module unit tests show examples of the Observer pattern and reactive workflows with RxJava 1.
-* `pub_sub_app.Application` - the web application that demonstrates how Spring 4 enables asynchronous execution with `ApplicationEventPublisher` and SSE.
-* `rx_app.Application` - the web application that demonstrates how Spring 4 enables asynchronous execution with RxJava 1.x and SSE.
-* `rx_app_no_logs.Application` - the web application that demonstrates how Spring 4 enables asynchronous execution with RxJava 1.x and SSE.
+* `pub_sub_app.Application` - a web application that demonstrates how Spring 4 enables asynchronous execution with `ApplicationEventPublisher` and SSE.
+* `rx_app.Application` - a web application that demonstrates how Spring 4 enables asynchronous execution with RxJava 1.x and SSE.
+* `rx_app_no_logs.Application` - a web application that demonstrates how Spring 4 enables asynchronous execution with RxJava 1.x and SSE.
 
 ## Chapter 3
 
-* `conversion_problem` - web application (with corresponding unit tests) demonstrates how to convert different types of futures.
+* `conversion_problem` - a web application (with corresponding unit tests) demonstrates how to convert different types of futures.
 * `async.vs.reactive` - unit tests compares the asynchronous and reactive approached (`Publisher` as `CompletableFuture`, `CompletableFuture` as `Publisher`).
 * `news-service.NewsServiceApp` - th console application that demonstrates custom implementation of Reactive Streams' interfaces (`Publisher`, `Subscriber`, `Processor`). 
 * `news-service` unit tests show how to test custom implementation of Reactive Streams with TCK. **Based on TestNG, may fail with JDK11, works with JDK8, tests may run for a couple of minutes!**
-* `jdk9` - console application that demonstrates how to adapt `reactive-streams` types to Java Flow API. **This application requires at least JDK9**.
+* `jdk9` - a console application that demonstrates how to adapt `reactive-streams` types to Java Flow API. **This application requires at least JDK9**.
 * `push.vs.pull` - classes and unit tests that demonstrate different approaches for data retrieval (pull, batched pull, push, push-pull).
-* `rxjava-reactivestreams-ratpack.LogServiceApplication` - **TODO: Review!!!** web application that demonstrates integration of Spring 4 and Ratpack. **Do not work with JDK11**
-* `vert.x.VertxDemoApp` - web application that demonstrates how Verte.x integrates with Reactive Streams. 
+* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates integration of Spring 4 and Ratpack. **Works with JDK8**
+* `vert.x.VertxDemoApp` - a web application that demonstrates how Verte.x integrates with Reactive Streams. 
 
 ## Chapter 4
 
@@ -105,22 +105,22 @@ Contains the following examples:
 
 ## Chapter 7
 
-* `section-01-jdbc` - blocking console application that demonstrates Jdbi library, Spring JDBC and Spring Data JDBC (runs embedded H2 database).
-* `section-02-jpa` - blocking console application that demonstrates Spring Data JPA (runs embedded H2 database).
-* `section-03-mongo` - blocking console application that demonstrates Spring Data Mongo (runs embedded MongoDB)
-* `section-04-rx-mongo` - reactive console application that demonstrates **reactive Spring Data Mongo** (runs embedded MongoDB).
+* `section-01-jdbc` - a blocking console application that demonstrates Jdbi library, Spring JDBC and Spring Data JDBC (runs embedded H2 database).
+* `section-02-jpa` - a blocking console application that demonstrates Spring Data JPA (runs embedded H2 database).
+* `section-03-mongo` - a blocking console application that demonstrates Spring Data Mongo (runs embedded MongoDB)
+* `section-04-rx-mongo` - a reactive console application that demonstrates **reactive Spring Data Mongo** (runs embedded MongoDB).
 * `section-05-rx-mongo-tx` - unit tests that demonstrate how reactive transactions work with MongoDB 4 (runs MongoDB cluster in Docker).
-* `section-06-r2dbc` - reactive console application that demonstrates how Spring Data JDBC and **R2DBC** work together (runs PostgreSQL in docker).
-* `section-07-rx-webflux` - reactive web application (SSE) that simulates simple chat application (embedded MongoDB).
+* `section-06-r2dbc` - a reactive console application that demonstrates how Spring Data JDBC and **R2DBC** work together (runs PostgreSQL in docker).
+* `section-07-rx-webflux` - a reactive web application (SSE) that simulates simple chat application (embedded MongoDB).
 * `section-08-rx-dbs` - code samples that demonstrate different types of reactive repositories (MongoDB, Cassandra, Couchbase, Redis).
-* `section-09-rx-sync` - console application that demonstrates how to wrap blocking JPA repository into reactive repository (runs embedded H2 database).
-* `section-10-rxjava2-jdbc` - console application that demonstrates how to use the `rxjava2-jdbc` library for reactive communication over blocking JDBC (runs embedded H2 database).
+* `section-09-rx-sync` - a console application that demonstrates how to wrap blocking JPA repository into reactive repository (runs embedded H2 database).
+* `section-10-rxjava2-jdbc` - a console application that demonstrates how to use the `rxjava2-jdbc` library for reactive communication over blocking JDBC (runs embedded H2 database).
 
 ## Chapter 8
 
 ## Chapter 9
 
-* `DemoApplication` - web application used for testing with a reactive test framework.
+* `DemoApplication` - a web application used for testing with a reactive test framework.
 * Module unit tests demonstrate how to verify reactive applications with `WebTestClient` (including security).
 
 ## Chapter 10 

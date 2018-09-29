@@ -85,11 +85,11 @@ Contains the following examples:
 
 * `conversion_problem` - a web application (with corresponding unit tests) demonstrates how to convert different types of futures.
 * `async.vs.reactive` - unit tests compares the asynchronous and reactive approached (`Publisher` as `CompletableFuture`, `CompletableFuture` as `Publisher`).
-* `news-service.NewsServiceApp` - th console application that demonstrates custom implementation of Reactive Streams' interfaces (`Publisher`, `Subscriber`, `Processor`). 
-* `news-service` unit tests show how to test custom implementation of Reactive Streams with TCK. **Based on TestNG, may fail with JDK11, works with JDK8, tests may run for a couple of minutes!**
+* `news-service.NewsServiceApp` - th console application that demonstrates custom implementation of Reactive Streams' interfaces (`Publisher`, `Subscriber`, `Processor`). **Works with JDK8, fail with JDK11**. 
+* `news-service` unit tests show how to test custom implementation of Reactive Streams with TCK. Tests are based on TestNG. **Works with JDK8, may fail with JDK11**. Tests may run long!**
 * `jdk9` - a console application that demonstrates how to adapt `reactive-streams` types to Java Flow API. **This application requires at least JDK9**.
 * `push.vs.pull` - classes and unit tests that demonstrate different approaches for data retrieval (pull, batched pull, push, push-pull).
-* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates the power of Reactive Streams for integration of reactive libraries (Spring, Ratpack, RxJava, etc.). **Works with JDK8**
+* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates the power of Reactive Streams for integration of reactive libraries (Spring, Ratpack, RxJava, etc.). **Works with JDK8, may fail with JDK11**.
 * `vert.x.VertxDemoApp` - a web application that demonstrates how Verte.x integrates with Reactive Streams. 
 
 ## Chapter 4

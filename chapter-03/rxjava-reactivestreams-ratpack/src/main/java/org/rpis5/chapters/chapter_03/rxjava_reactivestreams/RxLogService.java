@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class RxLogService implements LogService {
 
     final HttpClient<ByteBuf, ByteBuf> rxClient =
-            HttpClient.newClient(new InetSocketAddress(8090));
+            HttpClient.newClient(new InetSocketAddress(8080));
 
     @Override
     public Publisher<String> stream() {

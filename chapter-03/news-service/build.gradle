@@ -32,6 +32,7 @@ dependencies {
     compile('io.reactivex:rxnetty-http:0.5.3-rc.1')
     compile('io.reactivex.rxjava2:rxjava:2.2.2')
     compile('org.jctools:jctools-core:2.1.2')
+    
     compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
     compile('io.reactivex:rxjava-reactive-streams:1.2.1')

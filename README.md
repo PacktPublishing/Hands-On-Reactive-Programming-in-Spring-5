@@ -103,6 +103,12 @@ Contains the following examples:
 
 ## Chapter 6: WebFlux Async Non-blocking Communication
 
+* `functional` - a few examples of usage of function web approach with new WebFlux module mentioned in section `Purely functional web with WebFlux`
+* `webclient` - an example of the `WebClient` usage mentioned in section `Non-blocking cross-service communication with WebClient`. In addition, another example mentioned in this section is located in the following package -> `org.rpis5.chapters.chapter_06.functional.password.verification.client`
+* `websocket` - new reactive WebSocket API examples mentioned in section `Reactive WebSocket API`
+* `sse` - an example of Server-sent events usage in section `Reactive SSE as a lightweight replacement for WebSockets`
+*  
+
 ## Chapter 7: Reactive Database Access
 
 * `section-01-jdbc` - a blocking console application that demonstrates Jdbi library, Spring JDBC and Spring Data JDBC (runs embedded H2 database).
@@ -118,11 +124,7 @@ Contains the following examples:
 
 ## Chapter 8: Scaling Up with Cloud Streams
 
-* `functional` - a few examples of usage of function web approach with new WebFlux module mentioned in section `Purely functional web with WebFlux`
-* `webclient` - an example of the `WebClient` usage mentioned in section `Non-blocking cross-service communication with WebClient`. In addition, another example mentioned in this section is located in the following package -> `org.rpis5.chapters.chapter_06.functional.password.verification.client`
-* `websocket` - new reactive WebSocket API examples mentioned in section `Reactive WebSocket API`
-* `sse` - an example of Server-sent events usage in section `Reactive SSE as a lightweight replacement for WebSockets`
-*  
+
 
 ## Chapter 9: Testing the Reactive Application
 

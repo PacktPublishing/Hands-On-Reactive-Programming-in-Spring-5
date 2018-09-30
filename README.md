@@ -85,11 +85,11 @@ Contains the following examples:
 
 * `conversion_problem` - a web application (with corresponding unit tests) demonstrates how to convert different types of futures.
 * `async.vs.reactive` - unit tests compares the asynchronous and reactive approached (`Publisher` as `CompletableFuture`, `CompletableFuture` as `Publisher`).
-* `news-service.NewsServiceApp` - th console application that demonstrates custom implementation of Reactive Streams' interfaces (`Publisher`, `Subscriber`, `Processor`). **Works with JDK8, fail with JDK11**. 
+* `news-service.NewsServiceApp` - the console application that demonstrates custom implementation of Reactive Streams' interfaces (`Publisher`, `Subscriber`, `Processor`). **Works with JDK8, fail with JDK11**. 
 * `news-service` unit tests show how to test custom implementation of Reactive Streams with TCK. Tests are based on TestNG. **Works with JDK8, may fail with JDK11**. Tests may run long!
 * `jdk9` - a console application that demonstrates how to adapt `reactive-streams` types to Java Flow API. **This application requires at least JDK9**.
 * `push.vs.pull` - classes and unit tests that demonstrate different approaches for data retrieval (pull, batched pull, push, push-pull).
-* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates the power of Reactive Streams for integration of reactive libraries (Spring, Ratpack, RxJava, etc.). **Works with JDK8, may fail with JDK11**.
+* `rxjava-reactivestreams-ratpack.LogServiceApplication` - a web application that demonstrates the power of Reactive Streams for integration of reactive libraries (Spring, Ratpack, RxJava, etc.).
 * `vert.x.VertxDemoApp` - a web application that demonstrates how Verte.x integrates with Reactive Streams. 
 
 ## Chapter 4: Project Reactor - the Foundation for Reactive Apps
@@ -117,6 +117,12 @@ Contains the following examples:
 * `section-10-rxjava2-jdbc` - a console application that demonstrates how to use the `rxjava2-jdbc` library for reactive communication over blocking JDBC (runs embedded H2 database).
 
 ## Chapter 8: Scaling Up with Cloud Streams
+
+* `functional` - a few examples of usage of function web approach with new WebFlux module mentioned in section `Purely functional web with WebFlux`
+* `webclient` - an example of the `WebClient` usage mentioned in section `Non-blocking cross-service communication with WebClient`. In addition, another example mentioned in this section is located in the following package -> `org.rpis5.chapters.chapter_06.functional.password.verification.client`
+* `websocket` - new reactive WebSocket API examples mentioned in section `Reactive WebSocket API`
+* `sse` - an example of Server-sent events usage in section `Reactive SSE as a lightweight replacement for WebSockets`
+*  
 
 ## Chapter 9: Testing the Reactive Application
 

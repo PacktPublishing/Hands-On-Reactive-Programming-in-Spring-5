@@ -17,7 +17,7 @@ There is no hard requirement for OS.
 However, examples use JDK8 and later, Docker Engine 18.06 and later, and also download native executables (embedded MongoDB).
 Consequently, for successful execution, all software described above should work on your OS.
 
-Tested operation systems: MacOS High Sierra, Windows 10.
+Tested operation systems: MacOS High Sierra, Windows 10, Ubuntu Linux 16.04 LTS.
 
 ### Java
 

@@ -34,6 +34,14 @@ dependencies {
     compile('org.jctools:jctools-core:2.1.2')
     compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
+
+    compile "javax.xml.bind:jaxb-api:2.3.0"
+    compile "javax.activation:activation:1.1"
+    compile "com.sun.xml.bind:jaxb-impl:2.3.0"
+    compile "com.sun.xml.bind:jaxb-core:2.3.0"
+    compile "com.sun.xml.ws:rt:2.3.0"
+    compile "com.sun.xml.ws:jaxws-rt:2.3.0"
+
     compile('io.reactivex:rxjava-reactive-streams:1.2.1')
     compile('org.reactivestreams:reactive-streams-flow-adapters:1.0.2')
     compile('io.ratpack:ratpack-spring-boot-starter:1.5.4')

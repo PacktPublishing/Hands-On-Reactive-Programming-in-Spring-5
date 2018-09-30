@@ -55,8 +55,7 @@ dependencies {
 	compile("de.codecentric:spring-boot-admin-starter-server:${springBootAdminVersion}")
 	compile("de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}")
 
-	compileOnly('org.projectlombok:lombok')
-
+  	compileOnly('org.projectlombok:lombok:1.18.2')
 	// To start embedded MongoDB
 	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 

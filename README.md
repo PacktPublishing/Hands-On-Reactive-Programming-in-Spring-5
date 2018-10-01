@@ -174,24 +174,6 @@ To start the application, run class
 - Grafana: <http://localhost:3000> (user: `admin`, password: `admin`)
 - Zipkin: <http://localhost:9411>
 
-### Screenshots of a successfully started application
-
-Application web page:
-
-![Application web page](doc/img/ch10-web-page.png)
-
-Spring Boot Admin:
-
-![Spring Boot Admin](doc/img/ch10-spring-boot-admin.png)
-
-Zipkin report page:
-
-![Zipkin report page](doc/img/ch10-zipkin.png)
-
-Application monitoring dashboard provided by Grafana over Prometheus' metrics:
-
-![Zipkin report page](doc/img/ch10-grafana.png)
-
 ## Feedback
 
 Your feedback is important for us, so do not hesitate [creating issues](https://github.com/PacktPublishing/Hands-On-Reactive-Programming-in-Spring-5/issues) if some examples do not work with your environment.

@@ -1,15 +1,18 @@
 package com.example.service.impl;
 
 import java.time.Duration;
+import java.util.Arrays;
 
 import com.example.service.ChatService;
 import com.example.service.gitter.GitterProperties;
 import com.example.service.gitter.GitterUriBuilder;
 import com.example.service.gitter.dto.MessageResponse;
 import lombok.SneakyThrows;
+import org.thymeleaf.util.ArrayUtils;
 import reactor.core.publisher.Flux;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -59,5 +62,12 @@ public class GitterService implements ChatService<MessageResponse> {
                         .bodyToFlux(MessageResponse.class)
                         .timeout(Duration.ofSeconds(1))
                         .retryBackoff(Long.MAX_VALUE, Duration.ofMillis(500));
+    }
+
+    public static void main(String... args) {
+        String[] newArgs = Arrays.copyOf(args, args.length + 1);
+        newArgs[args.length] = "--spring.profiles.active=gitter";
+
+        SpringApplication.run(GitterService.class, newArgs);
     }
 }

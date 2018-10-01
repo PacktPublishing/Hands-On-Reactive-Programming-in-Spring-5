@@ -123,7 +123,70 @@ Contains the following examples:
 
 ## Chapter 8: Scaling Up with Cloud Streams
 
+### Cloud-Stream
+this is an example of Chat application that is fully decoupled and ready to be run in the cloud. The following is a steps required to prepare this sample:
+ 
+#### Preparing MongoDB
 
+The Project uses [MongoDB](https://www.mongodb.com/) as the primary database for all data's querying and storing.
+
+There are two available options in order to install MongoDB: 
+
+##### (Option 1) Dockerized MongoDB
+
+> Note, that option requires the essential understanding of the [Docker's CLI] (https://docs.docker.com/engine/reference/commandline/cli/)
+
+> Before starting that option, please ensure that [Docker](https://docs.docker.com/install/) (has already been installed on the local machine).
+
+It is necessary to execute the following command in the terminal to run MongoDB image in the Docker container:  
+
+``` SH
+docker run --name test-mongo -p 27017:27017 -d mongo
+```
+
+##### (Option 2) Local Community MongoDB Server
+
+There is an option to install MongoDB locally. All required information related to the local installation is available by the following [link](https://www.mongodb.com/download-center?jmp=nav#community).
+
+#### Preparing RabbitMQ
+
+The Project uses [RabbitMQ](https://www.rabbitmq.com/) as a message broker for this 
+example 
+
+There are two available options in order to install RabbitMQ: 
+
+##### (Option 1) Dockerized RabbitMQ
+
+> Note, that option requires the essential understanding of the [Docker's CLI] (https://docs.docker.com/engine/reference/commandline/cli/)
+
+> Before starting that option, please ensure that [Docker](https://docs.docker.com/install/) (has already been installed on the local machine).
+
+It is necessary to execute the following command in the terminal to run MongoDB image in the Docker container:  
+
+``` SH
+docker run --name test-rabbit -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 25672:25672 -d rabbitmq
+```
+
+##### (Option 2) Local Community MongoDB Server
+
+There is an option to install RabbitMQ locally. All required information related to the 
+local installation is available by the following [link](http://www.rabbitmq.com/download.html).
+
+
+
+#### Preparing the Environment
+
+To properly run the Project the proper environment variables / YAML properties are required. The following is the list of available *Spring Framework* properties/environment variables: 
+
+| Spring property | Environment variable | Description |
+| --------------- | -------------------- | ----------- |
+| `gitter.auth.token` | `GITTER_TOKEN` | Personal Access Token which can be used to access the Gitter API. | 
+| `gitter.api.endpoint` | - | The address of public Gitter REST API endpoint. The default value is [https://api.gitter.im/](https://api.gitter.im/). To learn more, [see following API docs](https://developer.gitter.im/docs/rest-api) |
+| `gitter.api.version` | - | The version of the Gitter REST API. The default value is `v1`. |
+| `gitter.api.messages-resource` | `GITTER_ROOM` | Path to the Messages Resource. **Note**, in environment variable case, it is unnecessary defining the whole path since it has already been defined as the following: `rooms/${GITTER_ROOM}/chatMessages`. To get created Gitter room id, please [see API docs](https://developer.gitter.im/docs/rooms-resource#list-rooms). |
+| `gitter.stream.endpoint` | - | The address of public Gitter Streaming API endpoint. The default value is [https://stream.gitter.im/](https://stream.gitter.im/). To learn more, [see following API docs](https://developer.gitter.im/docs/streaming-api)  |
+| `gitter.stream.version` | - | The version of the Gitter Streaming API. The default value is `v1`. |
+| `gitter.stream.messages-resource` | `GITTER_ROOM` | Path to the Messages Resource. **Note**, in environment variable case, it is unnecessary defining the whole path since it has already been defined as the following: `rooms/${GITTER_ROOM}/chatMessages`. To get created gitter room id, please [see API docs](https://developer.gitter.im/docs/rooms-resource#list-rooms). | 
 
 ## Chapter 9: Testing the Reactive Application
 

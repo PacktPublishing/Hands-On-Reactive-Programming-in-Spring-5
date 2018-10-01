@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.Arrays;
+
 import com.example.controller.vm.MessageVM;
 import com.example.controller.vm.UsersStatisticVM;
 import com.example.service.gitter.dto.MessageResponse;
@@ -42,9 +44,11 @@ public class InfoResource {
 	    return Flux.merge(messagesStream, statisticStream);
     }
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
+        String[] newArgs = Arrays.copyOf(args, args.length + 1);
+        newArgs[args.length] = "--spring.profiles.active=ui";
 
-		SpringApplication.run(InfoResource.class, args);
+        SpringApplication.run(InfoResource.class, args);
 	}
 }
 

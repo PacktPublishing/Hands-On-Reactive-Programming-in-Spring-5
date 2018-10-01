@@ -13,10 +13,10 @@ gitter:
     token: ${GITTER_TOKEN}
   api:
     endpoint: https://api.gitter.im/
-    messages-resource: rooms/${GITTER_ROOM}/chatMessages
+    messages-resource: rooms/${gitter.auth.token}/chatMessages
   stream:
     endpoint: https://stream.gitter.im/
-    messages-resource: rooms/${GITTER_ROOM}/chatMessages
+    messages-resource: rooms/${gitter.auth.token}/chatMessages
 
 ---
 

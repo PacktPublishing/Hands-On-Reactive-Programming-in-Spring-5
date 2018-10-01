@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import java.time.Duration;
+import java.util.Arrays;
 
 import com.example.controller.vm.UserVM;
 import com.example.controller.vm.UsersStatisticVM;
@@ -71,6 +72,9 @@ public class DefaultStatisticService implements StatisticService {
     }
 
     public static void main(String[] args) {
+        String[] newArgs = Arrays.copyOf(args, args.length + 1);
+        newArgs[args.length] = "--spring.profiles.active=statistic";
+
         SpringApplication.run(DefaultStatisticService.class, args);
     }
 }

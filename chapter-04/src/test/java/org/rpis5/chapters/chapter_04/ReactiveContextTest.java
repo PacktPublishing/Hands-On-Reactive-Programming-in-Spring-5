@@ -1,15 +1,13 @@
 package org.rpis5.chapters.chapter_04;
 
+import org.junit.Test;
 import reactor.core.publisher.Mono;
 import reactor.util.context.Context;
 
-public class ContextTest {
+public class ReactiveContextTest {
 
-    public static void main(String[] args) {
-        new ContextTest().run();
-    }
-
-    void run() {
+    @Test
+    public void showcaseContext() {
         printCurrentContext("top")
                 .subscriberContext(Context.of("top", "context"))
                 .flatMap(__ -> printCurrentContext("middle"))

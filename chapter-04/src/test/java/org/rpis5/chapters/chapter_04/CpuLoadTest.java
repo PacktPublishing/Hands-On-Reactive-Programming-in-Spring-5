@@ -24,8 +24,9 @@ public class CpuLoadTest {
 
       System.out.println("Application pid: " + applicationPid());
       loadStream
+         .filter(load -> !load.isNaN())
          .subscribe(load ->
-            System.out.println(format("[%s] System CPU load: %2.2f %%", now(), load * 100)));
+            System.out.println(format("[%s] System CPU load: %2.2f %%", now(), load * 100.0)));
 
       Thread.sleep(10_000);
    }

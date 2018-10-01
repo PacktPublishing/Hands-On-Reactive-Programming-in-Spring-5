@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.M4'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+ext {
+    reactorExtraVersion = '3.2.0.RELEASE'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-autoconfigure')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.security:spring-security-core')
+
+    compile("io.projectreactor.addons:reactor-extra:${reactorExtraVersion}")
+	
+    compileOnly('org.projectlombok:lombok')
+
+
+  	testCompile('io.projectreactor:reactor-test')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}

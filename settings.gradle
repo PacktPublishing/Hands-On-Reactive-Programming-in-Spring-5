@@ -16,7 +16,9 @@ include "chapter-04"
 
 include "chapter-05"
 
-include "chapter-06"
+include "chapter-06/samples"
+include "chapter-06/functional-spring-boot"
+include "chapter-06/security-samples"
 
 include "chapter-07/section-01-jdbc"
 include "chapter-07/section-02-jpa"

@@ -2,7 +2,7 @@
 
 _Published by Packt_
 
-Build cloud-ready, reactive systems with Spring 5.1 and Project Reactor.
+Build cloud-ready, reactive systems with Spring 5 and Project Reactor.
 
 **The code for this repository is under development** :construction_worker:
 
@@ -62,7 +62,6 @@ Now, you may explore and run all examples.
 ## Disclaimer
 
 All code in this repository is for demonstration purposes and, consequently, often oversimplified.
-Also, the code in this repository is **not production ready** and may require some improvements and additional testing. 
 
 ## Chapter 1: Why Reactive Spring?
 

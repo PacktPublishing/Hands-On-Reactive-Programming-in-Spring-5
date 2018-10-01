@@ -102,11 +102,10 @@ Contains the following examples:
 
 ## Chapter 6: WebFlux Async Non-blocking Communication
 
-* `functional` - a few examples of usage of function web approach with new WebFlux module mentioned in section `Purely functional web with WebFlux`
-* `webclient` - an example of the `WebClient` usage mentioned in section `Non-blocking cross-service communication with WebClient`. In addition, another example mentioned in this section is located in the following package -> `org.rpis5.chapters.chapter_06.functional.password.verification.client`
-* `websocket` - new reactive WebSocket API examples mentioned in section `Reactive WebSocket API`
-* `sse` - an example of Server-sent events usage in section `Reactive SSE as a lightweight replacement for WebSockets`
-*  
+* `functional` - a few examples of usage of function web approach with new WebFlux module mentioned in section _Purely functional web with WebFlux_
+* `webclient` - an example of the `WebClient` usage mentioned in section _Non-blocking cross-service communication with WebClient_. In addition, another example mentioned in this section is located in the following package: `org.rpis5.chapters.chapter_06.functional.password.verification.client`
+* `websocket` - new reactive WebSocket API examples mentioned in section _Reactive WebSocket API_
+* `sse` - an example of Server-sent events usage in section _Reactive SSE as a lightweight replacement for WebSockets_
 
 ## Chapter 7: Reactive Database Access
 

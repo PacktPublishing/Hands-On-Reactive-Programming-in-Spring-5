@@ -4,8 +4,6 @@ _Published by Packt_
 
 Build cloud-ready, reactive systems with Spring 5 and Project Reactor.
 
-**The code for this repository is under development** :construction_worker:
-
 ## General requirements
 
 All code samples should run on any operating system where the appropriate Java runs.

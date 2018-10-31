@@ -12,7 +12,8 @@ This is the code repository for [Hands-On Reactive Programming in Spring 5](http
 * Explore the benefits of a reactive system and understand its applications
 * Get to grips with using reactive programming in Spring 5
 * Gain an understanding of Project Reactor
-* Build a reactive system using Spring 5 and Project Reactor
+* Build a reactive system using Spring 5, Spring WebFlux, and Project Reactor
+* Explore reactive data access with Spring Data
 * Create a highly efficient reactive microservices with Spring Cloud
 * Test, monitor, and release reactive applications
 

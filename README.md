@@ -19,6 +19,16 @@ This is the code repository for [Hands-On Reactive Programming in Spring 5](http
 
 If you feel this book is for you, get your [copy](https://www.amazon.in/Hands-Reactive-Programming-Spring-cloud-ready-ebook/dp/B076QCBXZ2) today!
 
+## Authors
+
+#### Oleh Dokuka
+
+Oleh Dokuka is an experienced software engineer, Pivotal Champion, and one of the top contributors to Project Reactor and Spring Framework. He knows the internals of both frameworks very well and advocates reactive programming with Project Reactor on a daily basis. Along with that, the author applies Spring Framework and Project Reactor in software development, so he knows how to build reactive systems using these technologies.
+
+#### Igor Lozynskyi
+
+Igor Lozynskyi is a senior Java developer who primarily focuses on developing reliable, scalable, and blazingly fast systems. He has over seven years of experience with the Java platform. He is passionate about interesting and dynamic projects both in life and in software development.
+
 ## General requirements
 
 All code samples should run on any operating system where the appropriate Java runs.

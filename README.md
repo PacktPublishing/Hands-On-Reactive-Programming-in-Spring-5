@@ -1,8 +1,33 @@
 # Hands-On Reactive Programming in Spring 5
 
-_Published by Packt_
+<a href="https://www.packtpub.com/application-development/hands-reactive-programming-spring-5"><img src="https://d1ldz4te4covpm.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B06403.png" alt="Hands-On Reactive Programming in Spring 5" height="256px" align="right"></a>
 
-Build cloud-ready, reactive systems with Spring 5 and Project Reactor.
+This is the code repository for [Hands-On Reactive Programming in Spring 5](https://www.packtpub.com/application-development/hands-reactive-programming-spring-5), published by Packt.
+
+**Build cloud-ready, reactive systems with Spring 5 and Project Reactor**
+
+## What is this book about?
+
+* Discover the difference between a reactive system and reactive programming
+* Explore the benefits of a reactive system and understand its applications
+* Get to grips with using reactive programming in Spring 5
+* Gain an understanding of Project Reactor
+* Build a reactive system using Spring 5, Spring WebFlux, and Project Reactor
+* Explore reactive data access with Spring Data
+* Create a highly efficient reactive microservices with Spring Cloud
+* Test, monitor, and release reactive applications
+
+If you feel this book is for you, get your [copy](https://www.amazon.in/Hands-Reactive-Programming-Spring-cloud-ready-ebook/dp/B076QCBXZ2) today!
+
+## Authors
+
+#### Oleh Dokuka
+
+Oleh Dokuka is an experienced software engineer, Pivotal Champion, and one of the top contributors to Project Reactor and Spring Framework. He knows the internals of both frameworks very well and advocates reactive programming with Project Reactor on a daily basis. Along with that, the author applies Spring Framework and Project Reactor in software development, so he knows how to build reactive systems using these technologies.
+
+#### Igor Lozynskyi
+
+Igor Lozynskyi is a senior Java developer who primarily focuses on developing reliable, scalable, and blazingly fast systems. He has over seven years of experience with the Java platform. He is passionate about interesting and dynamic projects both in life and in software development.
 
 ## General requirements
 

@@ -1,6 +1,6 @@
 # Hands-On Reactive Programming in Spring 5
 
-<a href="https://www.packtpub.com/application-development/hands-reactive-programming-spring-5"><img src="https://d1ldz4te4covpm.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B06403.png" alt="Hands-On Reactive Programming in Spring 5" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/application-development/hands-reactive-programming-spring-5"><img src="https://github.com/PacktPublishing/Hands-On-Reactive-Programming-in-Spring-5/blob/master/doc/img/book-title.png" alt="Hands-On Reactive Programming in Spring 5" height="256px" align="right"></a>
 
 This is the code repository for [Hands-On Reactive Programming in Spring 5](https://www.packtpub.com/application-development/hands-reactive-programming-spring-5), published by Packt.
 

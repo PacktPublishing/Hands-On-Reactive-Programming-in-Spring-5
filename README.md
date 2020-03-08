@@ -72,7 +72,7 @@ Consequently, please install **IntelliJ Lombok plugin** (<https://github.com/mpl
 
 ![IDEA Lombok plugin](doc/img/idea-lombok-plugin.png)
 
-Also, please **enable annotation processing** in IDE (`Preferences` -> `Build, Execution, Deployment` -> `Complier` -> `Annotation Processors` -> Check `Enable annotation processing`).
+Also, please **enable annotation processing** in IDE (`Preferences` -> `Build, Execution, Deployment` -> `Compiler` -> `Annotation Processors` -> Check `Enable annotation processing`).
 
 ![IDEA annotation processing](doc/img/idea-annotation-processing.png)
 

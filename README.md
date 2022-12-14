@@ -1,3 +1,15 @@
+
+### Get this product for $5
+
+<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
+
+
+<b><p align='center'>[Buy now](https://packt.link/9781787284951)</p></b>
+
+
+<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
+
+
 # Hands-On Reactive Programming in Spring 5
 
 <a href="https://www.packtpub.com/application-development/hands-reactive-programming-spring-5"><img src="https://github.com/PacktPublishing/Hands-On-Reactive-Programming-in-Spring-5/blob/master/doc/img/book-title.png" alt="Hands-On Reactive Programming in Spring 5" height="256px" align="right"></a>

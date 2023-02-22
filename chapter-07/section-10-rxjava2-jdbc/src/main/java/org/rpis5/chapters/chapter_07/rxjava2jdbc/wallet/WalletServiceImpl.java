@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
+import org.springframework.stereotype.Service;
 import static java.lang.String.format;
 
 /**
@@ -20,6 +20,7 @@ import static java.lang.String.format;
  * Transactions are too hard for rxjava2-jdbc :-(
  */
 @Slf4j
+@Service
 public class WalletServiceImpl implements WalletService {
    public static final String SELECT_BY_OWNER =
       "select id, owner, balance, deposits, withdraws from wallet where owner=:owner";
